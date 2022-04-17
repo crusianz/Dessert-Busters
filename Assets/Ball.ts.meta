@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 1f7b9dfd2dd57fd4287eb2b9b76758e7
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_Events_1 = require(\"UnityEngine.Events\");\r\nclass Ball extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n        this.mEvent
+    = new UnityEngine_Events_1.UnityEvent();\r\n        this.mEvent.AddListener(()
+    => this.Ping());\r\n    }\r\n    Ping() {\r\n    }\r\n}\r\nexports.default =
+    Ball;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFsbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJhbGwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsMkRBQWdEO0FBSWhELE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFJbkQsS0FBSztRQUNELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSwrQkFBVSxFQUFFLENBQUM7UUFDL0IsSUFBSSxDQUFDLE1BQU0sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7SUFDL0MsQ0FBQztJQUVELElBQUk7SUFHSCxDQUFDO0NBRUw7QUFkRCx1QkFjQyJ9","assetPath":"Assets/Ball.ts","manifest":{"properties":[],"name":"Ball","description":""},"isCompiled":true}'
+  typescriptHash: 8548221531b138ae39656a550d3db67e
