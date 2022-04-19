@@ -23,6 +23,7 @@ ScriptedImporter:
     UnityEngine_Events_1 = require(\"UnityEngine.Events\");\r\nclass Ball extends
     ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n        this.mEvent
     = new UnityEngine_Events_1.UnityEvent();\r\n        this.mEvent.AddListener(()
-    => this.Ping());\r\n    }\r\n    Ping() {\r\n    }\r\n}\r\nexports.default =
-    Ball;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFsbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJhbGwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsMkRBQWdEO0FBSWhELE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFJbkQsS0FBSztRQUNELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSwrQkFBVSxFQUFFLENBQUM7UUFDL0IsSUFBSSxDQUFDLE1BQU0sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7SUFDL0MsQ0FBQztJQUVELElBQUk7SUFHSCxDQUFDO0NBRUw7QUFkRCx1QkFjQyJ9","assetPath":"Assets/Ball.ts","manifest":{"properties":[],"name":"Ball","description":""},"isCompiled":true}'
-  typescriptHash: 8548221531b138ae39656a550d3db67e
+    => this.Shot());\r\n    }\r\n    Update() {\r\n        if (this.moving) {\r\n           
+    this.rb.AddForce;\r\n        }\r\n    }\r\n    Shot() {\r\n    }\r\n}\r\nexports.default
+    = Ball;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFsbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJhbGwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsMkRBQWdEO0FBSWhELE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFTbkQsS0FBSztRQUNELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSwrQkFBVSxFQUFFLENBQUM7UUFDL0IsSUFBSSxDQUFDLE1BQU0sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7SUFDL0MsQ0FBQztJQUVELE1BQU07UUFDRixJQUFJLElBQUksQ0FBQyxNQUFNLEVBQ2Y7WUFDSSxJQUFJLENBQUMsRUFBRSxDQUFDLFFBQVEsQ0FBQTtTQUNuQjtJQUNMLENBQUM7SUFFRCxJQUFJO0lBR0gsQ0FBQztDQUVMO0FBMUJELHVCQTBCQyJ9","assetPath":"Assets/Ball.ts","manifest":{"properties":[{"assembly":"UnityEngine.PhysicsModule","name":"rb","type":"UnityEngine.Rigidbody","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Ball","description":""},"isCompiled":true}'
+  typescriptHash: 8307be5d3bfd6446a63d8e5997d37c49
