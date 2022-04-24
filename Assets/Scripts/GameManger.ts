@@ -15,7 +15,7 @@ export default class GameManger extends ZepetoScriptBehaviour {
 
     Awake() {
 
-        ZepetoPlayers.instance.LocalPlayer.zepetoCamera.gameObject.SetActive(false);
+        //ZepetoPlayers.instance.LocalPlayer.zepetoCamera.gameObject.SetActive(false);
 
         this.camera = Camera.main;
         this.rect = this.camera.rect;
