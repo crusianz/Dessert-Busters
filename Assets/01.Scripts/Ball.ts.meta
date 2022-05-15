@@ -1,0 +1,60 @@
+fileFormatVersion: 2
+guid: 1f7b9dfd2dd57fd4287eb2b9b76758e7
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst GameManager_1 = require(\"./GameManager\");\r\nclass
+    Ball extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.shotTrigger = false;\r\n        this.shotable
+    = true;\r\n    }\r\n    Start() {\r\n        this.GM = UnityEngine_1.GameObject.FindGameObjectWithTag(\"MainCamera\").GetComponent($typeof(GameManager_1.default));\r\n       
+    this.rb = this.gameObject.GetComponent($typeof(UnityEngine_1.Rigidbody));\r\n       
+    this.col = this.gameObject.GetComponent($typeof(UnityEngine_1.SphereCollider));\r\n   
+    }\r\n    Awake() {\r\n    }\r\n    /*Update() {\r\n\r\n        this.shotable
+    = true\r\n\r\n        for (let i = 0; i < this.GM.BallGroup.transform.childCount;
+    i++){\r\n            if (this.GM.BallGroup.transform.GetChild(i).GetComponent<Ball>().moving)
+    this.shotable = false;\r\n        }\r\n\r\n        if (this.GM.isBlockMoving)
+    this.shotable = false;\r\n\r\n        if (!this.shotable) return;\r\n\r\n       
+    if(!this.shotTrigger) this.Shot()\r\n\r\n        if(this.shotable && this.shotTrigger){\r\n           
+    this.shotTrigger = false\r\n            if(this.GM.BallGroup.transform.childCount
+    <= 1 || this.GM.BallGroup.transform.GetChild(1).GetComponent<Ball>().moving ==
+    false)\r\n            {\r\n                this.GM.Down.Invoke(this.gameObject)\r\n         
+    }\r\n         this.GM.Fall.Invoke()\r\n         this.addingCount = 0\r\n       
+    }\r\n    }\r\n\r\n    FixedUpdate(){\r\n        if(this.timerStart && ++this.timerCount
+    == 3)\r\n        {\r\n            this.timerCount = 0\r\n            this.GM.BallGroup.transform.GetChild(this.launchIndex++).GetComponent<Ball>().Launch(this.gap)\r\n           
+    //this.countTxt.text = \"x\" + (this.GM.BallGroup.transform.childCount - this.launchIndex).toString()\r\n           
+    if(this.launchIndex == this.GM.BallGroup.transform.childCount)\r\n           
+    {\r\n                this.timerStart = false\r\n                this.launchIndex
+    = 0\r\n                //this.countTxt.text = \"\"\r\n            }\r\n       
+    }\r\n    }\r\n\r\n    Shot() {\r\n        if(Input.GetMouseButtonDown(0))\r\n       
+    {\r\n            this.firstpos = Input.mousePosition\r\n        }\r\n\r\n       
+    if(Input.GetMouseButton(0))\r\n        {\r\n            this.secondpos = Input.mousePosition\r\n           
+    if((this.secondpos - this.firstpos).magnitude < 1) return;\r\n            this.gap
+    = (this.secondpos - this.firstpos).normalized\r\n            console.log(Input.mousePosition)\r\n       
+    }\r\n\r\n        if(Input.GetMouseButtonUp(0))\r\n        {\r\n            this.timerStart
+    = true\r\n            \r\n        }\r\n    }*/\r\n    Launch(pos) {\r\n       
+    this.GM.shotTrigger = true;\r\n        this.moving = true;\r\n        this.rb.AddForce(UnityEngine_1.Vector3.op_Multiply(pos,
+    this.speed));\r\n    }\r\n    OnTriggerEnter(coll) {\r\n        if (coll.CompareTag(\"Bottom\"))
+    {\r\n            this.veryFirstpos = this.transform.position;\r\n           
+    this.moving = false;\r\n            this.rb.velocity = UnityEngine_1.Vector3.zero;\r\n           
+    console.log(\"stop it!\");\r\n        }\r\n        else if (coll.CompareTag(\"Block\"))
+    {\r\n            console.log(\"collision!\");\r\n        }\r\n        else if
+    (coll.CompareTag(\"AddBall\")) {\r\n            this.GM.addingCount++;\r\n       
+    }\r\n    }\r\n}\r\nexports.default = Ball;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFsbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJhbGwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFFckQsNkNBQW1KO0FBRW5KLCtDQUF3QztBQUd4QyxNQUFxQixJQUFLLFNBQVEscUNBQXFCO0lBQXZEOztRQVFZLGdCQUFXLEdBQVMsS0FBSyxDQUFBO1FBQ2pDLGFBQVEsR0FBUyxJQUFJLENBQUE7SUE4R3pCLENBQUM7SUF2R0csS0FBSztRQUNELElBQUksQ0FBQyxFQUFFLEdBQUcsd0JBQVUsQ0FBQyxxQkFBcUIsQ0FBQyxZQUFZLENBQUMsQ0FBQyxZQUFZLFNBQUMscUJBQVcsRUFBRyxDQUFBO1FBQ3BGLElBQUksQ0FBQyxFQUFFLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsdUJBQVMsRUFBRyxDQUFDO1FBQ3BELElBQUksQ0FBQyxHQUFHLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsNEJBQWMsRUFBRyxDQUFDO0lBQzlELENBQUM7SUFFRCxLQUFLO0lBR0wsQ0FBQztJQUVEOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztPQTJERztJQUVILE1BQU0sQ0FBQyxHQUFZO1FBRWYsSUFBSSxDQUFDLEVBQUUsQ0FBQyxXQUFXLEdBQUcsSUFBSSxDQUFBO1FBQzFCLElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxDQUFBO1FBQ2xCLElBQUksQ0FBQyxFQUFFLENBQUMsUUFBUSxDQWpHSixxQkFBTyxDQTRIdTRrQixXQUFZLENBM0JyNWtCLEdBQUcsRUFBRyxJQUFJLENBQUMsS0FBSyxFQUFDLENBQUE7SUFDdEMsQ0FBQztJQUVELGNBQWMsQ0FBQyxJQUFjO1FBRXpCLElBQUksSUFBSSxDQUFDLFVBQVUsQ0FBQyxRQUFRLENBQUMsRUFDN0I7WUFDSSxJQUFJLENBQUMsWUFBWSxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFBO1lBQzNDLElBQUksQ0FBQyxNQUFNLEdBQUcsS0FBSyxDQUFBO1lBQ25CLElBQUksQ0FBQyxFQUFFLENBQUMsUUFBUSxHQUFHLHFCQUFPLENBQUMsSUFBSSxDQUFBO1lBQy9CLE9BQU8sQ0FBQyxHQUFHLENBQUMsVUFBVSxDQUFDLENBQUE7U0FDMUI7YUFFSSxJQUFJLElBQUksQ0FBQyxVQUFVLENBQUMsT0FBTyxDQUFDLEVBQ2pDO1lBQ0ksT0FBTyxDQUFDLEdBQUcsQ0FBQyxZQUFZLENBQUMsQ0FBQztTQUM3QjthQUlJLElBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsRUFDbEM7WUFDSSxJQUFJLENBQUMsRUFBRSxDQUFDLFdBQVcsRUFBRSxDQUFBO1NBQ3hCO0lBQ0wsQ0FBQztDQUdKO0FBdkhELHVCQXVIQyJ9","assetPath":"Assets/01.Scripts/Ball.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"ballCount","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"launchIndex","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"addingCount","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"speed","type":"System.Single","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"dir","type":"System.Single","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"timerCount","type":"System.Single","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"timerStart","type":"System.Boolean","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"shotable","type":"System.Boolean","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"moving","type":"System.Boolean","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.PhysicsModule","name":"rb","type":"UnityEngine.Rigidbody","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.PhysicsModule","name":"col","type":"UnityEngine.Collider","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"GM","type":"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Ball","description":""},"isCompiled":true}'
+  typescriptHash: 24574af424ed6a0863066fb642d3ac07

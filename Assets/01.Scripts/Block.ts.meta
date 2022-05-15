@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: e96192340781a8847a057101cc86bb74
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_UI_1 = require(\"UnityEngine.UI\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    GameManager_1 = require(\"./GameManager\");\r\nclass Block extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        this.anim = this.gameObject.GetComponent($typeof(UnityEngine_1.Animator));\r\n       
+    this.GM = UnityEngine_1.GameObject.FindGameObjectWithTag(\"MainCamera\").GetComponent($typeof(GameManager_1.default));\r\n       
+    this.hp_t = this.gameObject.GetComponentInChildren($typeof(UnityEngine_UI_1.Text));\r\n       
+    this.hp = this.GM.layer;\r\n    }\r\n    Update() {\r\n        this.hp_t.text
+    = String(this.hp);\r\n    }\r\n    Death() {\r\n        if (this.hp <= 0) {\r\n           
+    this.GetComponent($typeof(UnityEngine_1.BoxCollider)).enabled = false;\r\n           
+    UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n        }\r\n    }\r\n   
+    OnEnable() {\r\n    }\r\n    OnTriggerEnter(coll) {\r\n        if (coll.CompareTag(\"Ball\"))
+    {\r\n            this.hp--;\r\n            this.anim.SetTrigger(\"Hit\");\r\n       
+    }\r\n    }\r\n}\r\nexports.default = Block;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmxvY2suanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJCbG9jay50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUNBLDZDQUFvRjtBQUVwRixtREFBbUM7QUFDbkMsaURBQXFEO0FBQ3JELCtDQUF1QztBQUV2QyxNQUFxQixLQUFNLFNBQVEscUNBQXFCO0lBT3BELEtBQUs7UUFFRCxJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLHNCQUFRLEVBQUcsQ0FBQTtRQUNwRCxJQUFJLENBQUMsRUFBRSxHQUFHLHdCQUFVLENBQUMscUJBQXFCLENBQUMsWUFBWSxDQUFDLENBQUMsWUFBWSxTQUFDLHFCQUFXLEVBQUcsQ0FBQTtRQUNwRixJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsc0JBQXNCLFNBQUMscUJBQUksRUFBRyxDQUFBO1FBQzFELElBQUksQ0FBQyxFQUFFLEdBQUcsSUFBSSxDQUFDLEVBQUUsQ0FBQyxLQUFLLENBQUE7SUFDM0IsQ0FBQztJQUVELE1BQU07UUFFRixJQUFJLENBQUMsSUFBSSxDQUFDLElBQUksR0FBRyxNQUFNLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxDQUFBO0lBQ3BDLENBQUM7SUFFTSxLQUFLO1FBRVIsSUFBRyxJQUFJLENBQUMsRUFBRSxJQUFJLENBQUMsRUFDZjtZQUNJLElBQUksQ0FBQyxZQUFZLFNBQUMseUJBQVcsR0FBSSxPQUFPLEdBQUcsS0FBSyxDQUFBO1lBQ2hELHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQTtTQUN0QztJQUNMLENBQUM7SUFFRCxRQUFRO0lBR1IsQ0FBQztJQUVELGNBQWMsQ0FBQyxJQUFjO1FBRXpCLElBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxNQUFNLENBQUMsRUFDMUI7WUFFSSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUE7WUFDVCxJQUFJLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsQ0FBQTtTQUU5QjtJQUNMLENBQUM7Q0FDSjtBQTVDRCx3QkE0Q0MifQ==","assetPath":"Assets/01.Scripts/Block.ts","manifest":{"properties":[{"assembly":"UnityEngine.UI","name":"hp_t","type":"UnityEngine.UI.Text","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"hp","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"GM","type":"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AnimationModule","name":"anim","type":"UnityEngine.Animator","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Block","description":""},"isCompiled":true}'
+  typescriptHash: c5d9626340cf866af15758e636081e6b

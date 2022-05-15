@@ -1,0 +1,70 @@
+fileFormatVersion: 2
+guid: 74dd6cd701c79ea44a33b955fdcd02e4
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameManager_1 =
+    require(\\\"./GameManager\\\");\\r\\nconst Ball_1 = require(\\\"./Ball\\\");\\r\\nclass
+    BlockSpawner extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start()
+    {\\r\\n        this.GM = UnityEngine_1.GameObject.FindGameObjectWithTag(\\\"MainCamera\\\").GetComponent($typeof(GameManager_1.default));\\r\\n       
+    this.Counting();\\r\\n        this.Spawn();\\r\\n        this.GM.Fall.AddListener(()
+    => this.Counting());\\r\\n        this.GM.Fall.AddListener(() => this.Spawn());\\r\\n       
+    this.GM.Down.AddListener((pos) => this.AddBall(pos));\\r\\n        this.QI =
+    UnityEngine_1.Quaternion.Euler(0, 0, 0);\\r\\n    }\\r\\n    Counting() {\\r\\n       
+    let tr = this.transform;\\r\\n        for (let i = 0; i < 6; i++) {\\r\\n           
+    this.spawnList.push(new UnityEngine_1.Vector3(tr.position.x + i * 1.8, tr.position.y,
+    tr.position.z));\\r\\n        }\\r\\n        this.count = 0;\\r\\n        let
+    randBl = UnityEngine_1.Random.Range(0, 24);\\r\\n        this.BlockCount = this.BlockGroup.transform.childCount;\\r\\n       
+    if (this.BlockCount < 5)\\r\\n            this.count = randBl < 16 ? 1 : 2;\\r\\n       
+    else if (this.BlockCount > 4 && this.BlockCount < 15)\\r\\n            this.count
+    = randBl < 16 ? 2 : 3;\\r\\n        else if (this.BlockCount > 14 && this.BlockCount
+    < 25)\\r\\n            this.count = randBl < 12 ? 3 : 4;\\r\\n        else if
+    (this.BlockCount > 24)\\r\\n            this.count = randBl < 12 ? 5 : 6;\\r\\n   
+    }\\r\\n    Spawn() {\\r\\n        var gameObj = this.p_block;\\r\\n        for
+    (let i = 0; i < this.count; i++) {\\r\\n            var rand = UnityEngine_1.Mathf.RoundToInt(UnityEngine_1.Random.Range(0,
+    this.spawnList.length - 1));\\r\\n            var pos = new UnityEngine_1.Vector3(this.spawnList[rand].x,
+    this.spawnList[rand].y, this.spawnList[rand].z);\\r\\n            var Obj = UnityEngine_1.Object.Instantiate(gameObj,
+    pos, UnityEngine_1.Quaternion.Euler(0, 0, 0), this.BlockGroup.transform);\\r\\n           
+    this.spawnList.splice(rand, 1);\\r\\n            this.BlockCount++;\\r\\n       
+    }\\r\\n        UnityEngine_1.Object.Instantiate(this.p_Ball, this.spawnList[UnityEngine_1.Mathf.RoundToInt(UnityEngine_1.Random.Range(0,
+    this.spawnList.length - 1))], UnityEngine_1.Quaternion.Euler(0, 0, 0), this.BlockGroup.transform);\\r\\n       
+    //#region \uBE14\uB85D \uB0B4\uB9AC\uAE30\\r\\n        this.isBlockMoving = true;\\r\\n       
+    for (let i = 0; i < this.BlockGroup.transform.childCount; i++) {\\r\\n           
+    this.StartCoroutine(this.BlockMoveDown(this.BlockGroup.transform.GetChild(i)));\\r\\n       
+    }\\r\\n        //#endregion\\r\\n    }\\r\\n    *BlockMoveDown(TR) {\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(0.2);\\r\\n        var targetPos = UnityEngine_1.Vector3.op_Addition(TR.position,
+    new UnityEngine_1.Vector3(0, this.downPower, 0));\\r\\n        if (targetPos.y
+    < -14) {\\r\\n            if (TR.CompareTag(\\\"Block\\\"))\\r\\n               
+    this.GM.isBlockMoving = false;\\r\\n        }\\r\\n        let TT = 0.8;\\r\\n       
+    while (true) {\\r\\n            yield null;\\r\\n            TT -= UnityEngine_1.Time.deltaTime
+    * 1.5;\\r\\n            TR.position = UnityEngine_1.Vector3.MoveTowards(TR.position,
+    UnityEngine_1.Vector3.op_Addition(targetPos, new UnityEngine_1.Vector3(0, (this.downPower
+    / 5), 0)), TT);\\r\\n            if (UnityEngine_1.Vector3.op_Equality(TR.position,
+    UnityEngine_1.Vector3.op_Addition(targetPos, new UnityEngine_1.Vector3(0, (this.downPower
+    / 5), 0))))\\r\\n                break;\\r\\n        }\\r\\n        TT = 0.2;\\r\\n       
+    while (true) {\\r\\n            yield null;\\r\\n            TT -= UnityEngine_1.Time.deltaTime;\\r\\n           
+    TR.position = UnityEngine_1.Vector3.MoveTowards(TR.position, targetPos, TT);\\r\\n           
+    if (UnityEngine_1.Vector3.op_Equality(TR.position, targetPos))\\r\\n               
+    break;\\r\\n        }\\r\\n        this.isBlockMoving = false;\\r\\n    }\\r\\n   
+    AddBall(pos) {\\r\\n        for (let i = 0; i < this.GM.addingCount; i++) {\\r\\n           
+    var obj = UnityEngine_1.Object.Instantiate(this.main_Ball, pos.transform.position,
+    this.QI, this.BallGroup.transform);\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default
+    = BlockSpawner;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmxvY2tTcGF3bmVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQmxvY2tTcGF3bmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQWdJO0FBQ2hJLGlEQUFxRDtBQUNyRCwrQ0FBdUM7QUFDdkMsaUNBQXlCO0FBRXpCLE1BQXFCLFlBQWEsU0FBUSxxQ0FBcUI7SUFlM0QsS0FBSztRQUNELElBQUksQ0FBQyxFQUFFLEdBQUcsd0JBQVUsQ0FBQyxxQkFBcUIsQ0FBQyxZQUFZLENBQUMsQ0FBQyxZQUFZLFNBQUMscUJBQVcsRUFBRyxDQUFBO1FBQ3BGLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQTtRQUNmLElBQUksQ0FBQyxLQUFLLEVBQUUsQ0FBQTtRQUNaLElBQUksQ0FBQyxFQUFFLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFFLEVBQUUsQ0FBQSxJQUFJLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQTtRQUM3QyxJQUFJLENBQUMsRUFBRSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsR0FBRSxFQUFFLENBQUEsSUFBSSxDQUFDLEtBQUssRUFBRSxDQUFDLENBQUE7UUFDMUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUE7UUFDcEQsSUFBSSxDQUFDLEVBQUUsR0FBRyx3QkFBVSxDQUFDLEtBQUssQ0FBQyxDQUFDLEVBQUMsQ0FBQyxFQUFDLENBQUMsQ0FBQyxDQUFBO0lBQ3JDLENBQUM7SUFHTSxRQUFRO1FBQ1gsSUFBSSxFQUFFLEdBQWMsSUFBSSxDQUFDLFNBQVMsQ0FBQTtRQUNsQyxLQUFLLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsRUFBRSxFQUFFO1lBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsSUFBSSxxQkFB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\",\"assetPath\":\"Assets/01.Scripts/BlockSpawner.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"\",\"name\":\"GM\",\"type\":\"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"spawnList\",\"type\":\"UnityEngine.Vector3[]\",\"isArray\":true,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"BlockCount\",\"type\":\"System.Int32\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"p_block\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"p_Ball\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"main_Ball\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"BlockGroup\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"BallGroup\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"isBlockMoving\",\"type\":\"System.Boolean\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"downPower\",\"type\":\"System.Single\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"QI\",\"type\":\"UnityEngine.Quaternion\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"count\",\"type\":\"System.Int32\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"BlockSpawner\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 2a9ccbc40b2896cc3b61213d1a8dcf99
