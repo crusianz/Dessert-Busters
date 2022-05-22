@@ -60,7 +60,7 @@ count: int
         for (let i = 0; i<this.BlockGroup.transform.childCount; i++){
             this.StartCoroutine(this.BlockMoveDown(this.BlockGroup.transform.GetChild(i)))
         }
-
+        this.spawnList.splice(0,this.spawnList.length)
         
         //#endregion
     }

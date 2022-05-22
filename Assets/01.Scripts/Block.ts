@@ -11,10 +11,11 @@ export default class Block extends ZepetoScriptBehaviour {
     hp: int
     GM: GameManager
     anim: Animator
+    col: BoxCollider
 
     Start() {    
-        
         this.anim = this.gameObject.GetComponent<Animator>()
+        this.col = this.GetComponent<BoxCollider>()
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
         this.hp_t = this.gameObject.GetComponentInChildren<Text>()
         this.hp = this.GM.layer
@@ -22,28 +23,27 @@ export default class Block extends ZepetoScriptBehaviour {
 
     Update()
     {
+        if(this.hp <= 0)
+        {
+            this.col.enabled = false    
+        }
+        else this.col.enabled = true
         this.hp_t.text = String(this.hp)
     }
 
     public Death()
     {
-        if(this.hp <= 0)
-        {
-            this.GetComponent<BoxCollider>().enabled = false
+        
+        if(this.hp <= 0) {
+            this.GM.ScoreUp.Invoke(0)
             GameObject.Destroy(this.gameObject)
         }
-    }
-
-    OnEnable()
-    {
-        
     }
 
     OnTriggerEnter(coll: Collider)
     {
         if(coll.CompareTag("Ball")) 
         {
-            
             this.hp--
             this.anim.SetTrigger("Hit")
             

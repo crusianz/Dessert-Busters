@@ -96,7 +96,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.499
+  m_Radius: 0.485
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &2047627661512507599
 SphereCollider:
@@ -128,19 +128,9 @@ MonoBehaviour:
     - speed
     - dir
     - moving
-    - gap
-    - ballCount
-    - launchIndex
-    - addingCount
-    - timerCount
-    - timerStart
+    - isLanding
     - shotable
     unityValues:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -150,11 +140,6 @@ MonoBehaviour:
     - '{"type":"System.Single, mscorlib","value":"900"}'
     - '{"type":"System.Single, mscorlib","value":"0"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'
-    - '{"type":"UnityEngine.Vector3, UnityEngine.CoreModule","value":"{\"x\":0.0,\"y\":0.0,\"z\":0.0}"}'
-    - '{"type":"System.Int32, mscorlib","value":"0"}'
-    - '{"type":"System.Int32, mscorlib","value":"0"}'
-    - '{"type":"System.Int32, mscorlib","value":"0"}'
-    - '{"type":"System.Single, mscorlib","value":"0"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'
     unityArrayValues: []
@@ -176,4 +161,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
