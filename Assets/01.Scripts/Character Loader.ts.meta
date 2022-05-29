@@ -22,10 +22,11 @@ ScriptedImporter:
     { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
     ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nclass
     CharacterControllerSample extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n   
-    Start() {\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
-    \"\", \"huh00833\", new ZEPETO_Character_Controller_1.SpawnInfo(), true);\r\n       
-    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    Start() {\r\n        var spawninfo = new ZEPETO_Character_Controller_1.SpawnInfo();\r\n       
+    spawninfo.position = this.gameObject.transform.position;\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    \"\", \"huh00833\", spawninfo, true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
     => {\r\n            let _player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n       
-    });\r\n    }\r\n}\r\nexports.default = CharacterControllerSample;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyIExvYWRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlciBMb2FkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkVBQ2lDO0FBRWpDLE1BQXFCLHlCQUEwQixTQUFRLHFDQUFxQjtJQUN4RSxLQUFLO1FBQ0QsaUVBQXVCLHdCQUF3QixDQUEvQywyQ0FBYSxDQUFDLFFBQVEsRUFBMEIsRUFBRSxFQUFFLFVBQVUsRUFBRSxJQUFJLHVDQUFTLEVBQUUsRUFDM0UsSUFBSSxFQUFFO1FBRVYsMkNBQWEsQ0FBQyxRQUFRLENBQUMsa0JBQWtCLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUN2RCxJQUFJLE9BQU8sR0FBZ0IsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDO1FBQ2xFLENBQUMsQ0FBQyxDQUFDO0lBQ1AsQ0FBQztDQUNKO0FBVEQsNENBU0MifQ==","assetPath":"Assets/Character
+    });\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers;\r\n    }\r\n}\r\nexports.default
+    = CharacterControllerSample;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyIExvYWRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlciBMb2FkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkVBQ2lDO0FBR2pDLE1BQXFCLHlCQUEwQixTQUFRLHFDQUFxQjtJQUN4RSxLQUFLO1FBRUQsSUFBSSxTQUFTLEdBQUcsSUFBSSx1Q0FBUyxFQUFFLENBQUE7UUFDL0IsU0FBUyxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUE7UUFDdkQsaUVBQXVCLHdCQUF3QixDQUEvQywyQ0FBYSxDQUFDLFFBQVEsRUFBMEIsRUFBRSxFQUFFLFVBQVUsRUFBRSxTQUFTLEVBQ3JFLElBQUksRUFBRTtRQUVWLDJDQUFhLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDdkQsSUFBSSxPQUFPLEdBQWdCLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQztRQUNsRSxDQUFDLENBQUMsQ0FBQztRQUNILDJDQUFhLENBQUE7SUFDakIsQ0FBQztDQUNKO0FBYkQsNENBYUMifQ==","assetPath":"Assets/01.Scripts/Character
     Loader.ts","manifest":{"properties":[],"name":"CharacterControllerSample","description":""},"isCompiled":true}'
-  typescriptHash: 1f23b4b6d26a246813dcde3b3c478a5f
+  typescriptHash: 2cf814060254436da9d6a0cb889112b6

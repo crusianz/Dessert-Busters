@@ -19,6 +19,8 @@ export default class GameManager extends ZepetoScriptBehaviour {
     //#region 공 관련 변수
     private ball: GameObject
     public BallGroup: GameObject
+    public Cannon: GameObject
+    public Player: ZepetoPlayers
     public gap: Vector3
     public ballfirstpos: Vector3
     private firstpos: Vector3
@@ -44,7 +46,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public countTxt: Text
     LR: LineRenderer
     public curScore: int = 0
-    spcScore: int
+    scoreAddValue: int
     normal_mob: int
     spc_mob: int
     screen_Scale: float[]
@@ -53,6 +55,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     
     Awake() {
         //#region 이벤트 관리
+        this.scoreAddValue = 30
         this.ballfirstpos = new Vector3(-2.15, -12.35, 0)
         this.Down = new UnityEvent$1<GameObject>()
         this.Fall = new UnityEvent()
@@ -63,8 +66,6 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.ScoreUp.AddListener((type)=>this.ScoreAdd(type))
         this.AddingBall = new UnityEvent()
         //#endregion
-
-        //ZepetoPlayers.instance.LocalPlayer.zepetoCamera.gameObject.SetActive(false);
         this.layer = 1
 
         this.camera = Camera.main;
@@ -81,11 +82,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
             this.rect.x = (1 - this.screen_Scale[1]) / 2;
         }
         this.camera.rect = this.rect;
-
+        
     }
 
     Start() {    
-
+        //ZepetoPlayers.instance.ZepetoCamera.gameObject.SetActive(false)
+        //ZepetoPlayers.instance.characterData.minMoveDistance = 100
     }
     //#region 공 발사
     Update() {
@@ -166,7 +168,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     PosSetting(pos: GameObject)
     {
-        this.ballfirstpos = pos.transform.position
+        this.ballfirstpos = new Vector3(pos.transform.position.x, -12.47, 0)
         this.isFirst = false
         
     }
@@ -176,9 +178,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
     {
         switch(type)
         {
-            case 1 : this.curScore += 60
+            case 1 : this.curScore += this.scoreAddValue * 2
                      break;
-            default : this.curScore += 30  
+            default : this.curScore += this.scoreAddValue
         }
         
     }

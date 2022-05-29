@@ -470,12 +470,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408238267}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.64, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.75, y: -12.688, z: -1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413831226
 GameObject:
@@ -533,6 +533,9 @@ MonoBehaviour:
     - QI
     - BallGroup
     - main_Ball
+    - p_spcBlock
+    - isSpcSpawning
+    - spcScore
     unityValues:
     - {fileID: 1289753938}
     - {fileID: 4136977455560117900, guid: 6ee5518425e65e2489970013c7cf73d8, type: 3}
@@ -545,6 +548,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 1316979298}
     - {fileID: 2047627661512507598, guid: 041cba8846d38d245a0d536d304e6e1c, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     values:
     - 
     - 
@@ -558,7 +564,12 @@ MonoBehaviour:
     - '{"type":"UnityEngine.Quaternion, UnityEngine.CoreModule","value":"{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":0.0}"}'
     - 
     - 
-    unityArrayValues: []
+    - '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":0,\"length\":1,\"type\":\"UnityEngine.Object,
+      UnityEngine.CoreModule\",\"isUnity\":true}"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"System.Int32, mscorlib","value":"0"}'
+    unityArrayValues:
+    - {fileID: 7760103535250429671, guid: 436002b0081be8349941bce243d6892d, type: 3}
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: 74dd6cd701c79ea44a33b955fdcd02e4, type: 3}
     isExpaned: 0
@@ -698,7 +709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422599527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -14.31, z: 0}
+  m_LocalPosition: {x: -1.75, y: -12.688, z: -1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -798,7 +809,7 @@ Transform:
   m_LocalScale: {x: 9, y: 1, z: 9}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &568347162
 GameObject:
@@ -1267,7 +1278,7 @@ Transform:
   m_GameObject: {fileID: 994652342}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2.055, y: -13.51, z: 0}
-  m_LocalScale: {x: 1, y: 13.051544, z: 1}
+  m_LocalScale: {x: 1, y: 13.051544, z: 4.3555}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -1694,7 +1705,7 @@ MonoBehaviour:
     - isBlockMoving
     - rect
     - curScore
-    - spcScore
+    - scoreAddValue
     - normal_mob
     - spc_mob
     - screen_Scale

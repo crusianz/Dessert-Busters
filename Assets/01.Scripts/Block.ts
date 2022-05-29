@@ -1,5 +1,5 @@
 import { Compute_DistanceTransform_EventTypes } from 'TMPro'
-import { Animator, Collider, Collision, GameObject, BoxCollider } from 'UnityEngine'
+import { Animator, Collider, Collision, GameObject, BoxCollider, Mathf } from 'UnityEngine'
 import { UnityEvent } from 'UnityEngine.Events';
 import {Text} from 'UnityEngine.UI'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
@@ -8,6 +8,7 @@ import GameManager from './GameManager'
 export default class Block extends ZepetoScriptBehaviour {
 
     public hp_t: Text
+    public type: int
     hp: int
     GM: GameManager
     anim: Animator
@@ -18,7 +19,8 @@ export default class Block extends ZepetoScriptBehaviour {
         this.col = this.GetComponent<BoxCollider>()
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
         this.hp_t = this.gameObject.GetComponentInChildren<Text>()
-        this.hp = this.GM.layer
+        if(this.type >= 1) this.hp = Mathf.RoundToInt(this.GM.layer * 2.5)
+        else this.hp = this.GM.layer
     }
 
     Update()
@@ -33,7 +35,6 @@ export default class Block extends ZepetoScriptBehaviour {
 
     public Death()
     {
-        
         if(this.hp <= 0) {
             this.GM.ScoreUp.Invoke(0)
             GameObject.Destroy(this.gameObject)

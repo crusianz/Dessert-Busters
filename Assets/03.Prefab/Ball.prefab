@@ -130,7 +130,9 @@ MonoBehaviour:
     - moving
     - isLanding
     - shotable
+    - iscol
     unityValues:
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -139,6 +141,7 @@ MonoBehaviour:
     values:
     - '{"type":"System.Single, mscorlib","value":"900"}'
     - '{"type":"System.Single, mscorlib","value":"0"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'
     - '{"type":"System.Boolean, mscorlib","value":"False"}'

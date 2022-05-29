@@ -51,12 +51,15 @@ MonoBehaviour:
     keys:
     - hp
     - hp_t
+    - type
     unityValues:
     - {fileID: 0}
     - {fileID: 1360137052717383754}
+    - {fileID: 0}
     values:
     - '{"type":"System.Int32, mscorlib","value":"1"}'
     - 
+    - '{"type":"System.Int32, mscorlib","value":"0"}'
     unityArrayValues: []
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: e96192340781a8847a057101cc86bb74, type: 3}
@@ -219,7 +222,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360137052717383753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1360137052038432517}
