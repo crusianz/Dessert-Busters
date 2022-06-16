@@ -63,7 +63,7 @@ count: int
                 var sObj = Object.Instantiate(spcObj, pos, Quaternion.Euler(0,0,0),this.BlockGroup.transform)    
                 this.isSpcSpawning = false
             }
-            var Obj = Object.Instantiate(gameObj, pos , Quaternion.Euler(0,0,0),this.BlockGroup.transform)
+            else var Obj = Object.Instantiate(gameObj, pos , Quaternion.Euler(0,0,0),this.BlockGroup.transform)
             this.spawnList.splice(rand, 1)
             this.BlockCount++
         }
@@ -93,7 +93,6 @@ count: int
             yield null
             TT -= Time.deltaTime * 1.5
             TR.position = Vector3.MoveTowards(TR.position, targetPos + new Vector3(0,(this.downPower / 5),0), TT)
-            console.log("upping")
             if(TR.position == targetPos + new Vector3(0, (this.downPower / 5), 0) || TT <= 0) break
         }
 
@@ -102,7 +101,6 @@ count: int
             yield null
             TT -= Time.deltaTime
             TR.position = Vector3.MoveTowards(TR.position, targetPos, TT)
-            console.log("downning")
             if(TT <= 0) break
         }
         this.isBlockMoving = false

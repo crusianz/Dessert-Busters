@@ -1,5 +1,5 @@
 import { isBreakOrContinueStatement } from 'typescript'
-import { Camera, GameObject, Rect, Screen, Transform, Vector3, Vector2, Input, LineRenderer, RaycastHit, Physics, LayerMask, Mathf } from 'UnityEngine'
+import { Camera, GameObject, Rect, Screen, Transform, Vector3, Vector2, Input, LineRenderer, RaycastHit, Physics, LayerMask, Mathf, Quaternion } from 'UnityEngine'
 import {Text} from 'UnityEngine.UI';
 import { UnityEvent, UnityEvent$1 } from 'UnityEngine.Events'
 import { ZepetoCamera, ZepetoPlayers } from 'ZEPETO.Character.Controller'
@@ -113,6 +113,8 @@ export default class GameManager extends ZepetoScriptBehaviour {
          this.Fall.Invoke()
          this.addingCount = 0
         }
+
+        this.Cannon.transform.position = Vector3.Lerp(this.Cannon.transform.position, new Vector3(this.ballfirstpos.x, this.Cannon.transform.position.y, -4), 0.4)
     }
 
     
@@ -129,6 +131,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 this.countTxt.text = ""
             }
         }
+        
     }
 
     Shot() {
@@ -146,8 +149,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
             //console.log(Input.mousePosition)
 
             let ref = $ref<RaycastHit>();
-            let startpos = new Vector2(this.ballfirstpos.x, this.ballfirstpos.y)
-            let endpos = new Vector2(this.gap.x, this.gap.y)
+            /*let startpos = new Vector2(this.ballfirstpos.x, this.ballfirstpos.y)
+            let endpos = new Vector2(this.gap.x, this.gap.y)*/
+            
             if(Physics.Raycast(this.ballfirstpos, this.gap, ref, 10000, 1 << LayerMask.NameToLayer("Wall")))
             {
                 
@@ -155,6 +159,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
             let hit = $unref(ref)
             this.LR.SetPosition(0,this.ballfirstpos)
             this.LR.SetPosition(1,hit.point)
+            this.Cannon.transform.GetChild(0).transform.rotation =  Quaternion.Euler(this.fGetAngle(this.LR.GetPosition(0),this.LR.GetPosition(1)) + 90 ,270, -270)
         }
 
         if(Input.GetMouseButtonUp(0))
@@ -168,9 +173,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     PosSetting(pos: GameObject)
     {
+        console.log("landing")
         this.ballfirstpos = new Vector3(pos.transform.position.x, -12.47, 0)
-        this.isFirst = false
-        
+        this.isFirst = false   
     }
     //#endregion
 
@@ -189,5 +194,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
     {
         this.layer++
     }   
+
+    public fGetAngle (vStart: Vector3, vEnd: Vector3)
+    {
+        let v = vEnd - vStart;
+ 
+        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
 
 }

@@ -8,6 +8,7 @@ import GameManager from './GameManager'
 export default class Block extends ZepetoScriptBehaviour {
 
     public hp_t: Text
+    
     public type: int
     hp: int
     GM: GameManager
