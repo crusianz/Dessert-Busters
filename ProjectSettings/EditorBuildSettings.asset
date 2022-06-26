@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/05.Scene/BrickBreaker.unity
+    guid: 354aae120b7654d478ca61fec1eea54d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c25d6c742987a4244babb2befbecccc9, type: 2}

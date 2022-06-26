@@ -56,24 +56,46 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.script
+      value: 
+      objectReference: {fileID: 4458252877524076426, guid: 3939882bc2dd0ef4fb8ccf8e5db68d18, type: 3}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.keys.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.values.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.keys.Array.data[2]
       value: type
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.keys.Array.data[3]
+      value: height_list
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.keys.Array.data[4]
+      value: width_list
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.values.Array.data[2]
-      value: '{"type":"System.Int32, mscorlib","value":"1"}'
+      value: '{"type":"System.Int32, mscorlib","value":"0"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.values.Array.data[3]
+      value: '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":0,\"length\":0,\"type\":\"System.Int32,
+        mscorlib\",\"isUnity\":false}"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.values.Array.data[4]
+      value: '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":0,\"length\":0,\"type\":\"System.Int32,
+        mscorlib\",\"isUnity\":false}"}'
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.unityValues.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1360137052717383754, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: m_Text
@@ -83,9 +105,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5959739689919143149, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6086251754653334808, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a4a623cf978f75549bebc4caf3b44110, type: 2}
+    - target: {fileID: 6140740030054473661, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}

@@ -1,4 +1,4 @@
-import { GameObject, Object, Quaternion, Random, Time, Transform, Vector3, Mathf, Coroutine, WaitForSeconds } from 'UnityEngine'
+import { GameObject, Object, Quaternion, Random, Time, Transform, Vector3, Mathf, Coroutine, WaitForSeconds, BoxCollider, Component } from 'UnityEngine'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import GameManager from './GameManager'
 import Ball from './Ball'
@@ -29,6 +29,7 @@ count: int
         this.GM.Fall.AddListener(()=>this.Spawn())
         this.GM.Down.AddListener((pos) => this.AddBall(pos))
         this.GM.ScoreUp.AddListener((num)=>this.spcCount(num))
+        this.GM.SkillUse.AddListener((num)=>this.Penetration(num))
         this.QI = Quaternion.Euler(0,0,0)
     }
 
@@ -42,11 +43,11 @@ count: int
         //#region 특수블록 소환
         
         //#endregion
-        if(this.BlockCount < 5) this.count = randBl < 16 ? 1 : 2
-        else if(this.BlockCount > 4 && this.BlockCount < 15) this.count = randBl < 16 ? 2 : 3
-        else if(this.BlockCount > 14 && this.BlockCount < 25) this.count = randBl < 12 ? 3 : 4
-        else if(this.BlockCount > 24) this.count = randBl < 12 ? 5 : 6
-        if(this.isSpcSpawning && this.count < 6){
+        if(this.BlockCount < 5 || this.GM.curScore < 300) this.count = randBl < 16 ? 1 : 2
+        if((this.BlockCount > 4 && this.BlockCount < 15) || (this.GM.curScore >= 300 && this.GM.curScore < 800)) this.count = randBl < 16 ? 2 : 3
+        if((this.BlockCount > 14 && this.BlockCount < 25) || (this.GM.curScore >= 800 && this.GM.curScore < 2000)) this.count = randBl < 12 ? 3 : 4
+        if(this.BlockCount > 24 || this.GM.curScore >= 2000) this.count = randBl < 12 ? 4 : 5
+        if(this.isSpcSpawning && this.count < 5){
             this.count += 1
         }
         
@@ -55,7 +56,8 @@ count: int
 
     public Spawn(){
         var gameObj = this.p_block
-        var spcObj = this.p_spcBlock[0]
+        let spc_type = Mathf.RoundToInt(Random.Range(0,this.GM.phase))
+        var spcObj = this.p_spcBlock[spc_type]
         for (let i = 0; i < this.count; i++ ){
             var rand = Mathf.RoundToInt(Random.Range(0, this.spawnList.length-1))
             var pos = new Vector3(this.spawnList[rand].x, this.spawnList[rand].y, this.spawnList[rand].z)
@@ -103,8 +105,29 @@ count: int
             TR.position = Vector3.MoveTowards(TR.position, targetPos, TT)
             if(TT <= 0) break
         }
-        this.isBlockMoving = false
 
+        this.isBlockMoving = false
+        this.Penetration(0)
+    }
+
+    Penetration(num: int){
+        
+        if(num == 1)
+        {
+            for(let i = this.BlockGroup.transform.childCount - 1; i >= 0; i--){
+                var son = this.BlockGroup.transform.GetChild(i)
+                if(son.CompareTag("Block")) this.BlockGroup.transform.GetChild(i).GetComponent<BoxCollider>().isTrigger = true
+                else continue
+            }
+        }
+        else {
+            for(let i = this.BlockGroup.transform.childCount - 1; i >= 0; i--){
+                var son = this.BlockGroup.transform.GetChild(i)
+                if(son.CompareTag("Block")) this.BlockGroup.transform.GetChild(i).GetComponent<BoxCollider>().isTrigger = false
+                else continue
+            }
+        }
+        
     }
 
     spcCount(num: int)

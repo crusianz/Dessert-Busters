@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: c88bb869319b0e24a84671452a42b92b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    UnityEngine_EventSystems_EventTrigger_1 = require(\\\"UnityEngine.EventSystems.EventTrigger\\\");\\r\\nconst
+    UnityEngine_EventSystems_1 = require(\\\"UnityEngine.EventSystems\\\");\\r\\nconst
+    UnityEngine_UI_1 = require(\\\"UnityEngine.UI\\\");\\r\\nconst ZEPETO_Script_1
+    = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameManager_1 = require(\\\"./GameManager\\\");\\r\\nclass
+    SkillButton extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start()
+    {\\r\\n        var trigger = this.gameObject.GetComponent($typeof(UnityEngine_EventSystems_1.EventTrigger));\\r\\n       
+    var entry = new UnityEngine_EventSystems_EventTrigger_1.Entry();\\r\\n       
+    entry.eventID = UnityEngine_EventSystems_1.EventTriggerType.PointerUp;\\r\\n       
+    entry.callback.AddListener(() => {\\r\\n            console.log(\\\"click\\\");\\r\\n       
+    });\\r\\n        trigger.triggers.Add(entry);\\r\\n        this.GM = UnityEngine_1.GameObject.FindGameObjectWithTag(\\\"MainCamera\\\").GetComponent($typeof(GameManager_1.default));\\r\\n       
+    for (let i = 0; i < this.buttons.length; i++) {\\r\\n            this.buttons[i].interactable
+    = false;\\r\\n        }\\r\\n    }\\r\\n    Update() {\\r\\n        for (let
+    i = 0; i < this.buttons.length; i++) {\\r\\n            let ctText = this.buttons[i].gameObject.GetComponentInChildren($typeof(UnityEngine_UI_1.Text));\\r\\n           
+    //console.log(this.GM.skill_cooltime)\\r\\n            ctText.text = this.GM.skill_cooltime[i].toString()
+    + \\\"\uD134\\\";\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default = SkillButton;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2tpbGxCdXR0b24uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJTa2lsbEJ1dHRvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUF1RDtBQUN2RCxpR0FBNEQ7QUFDNUQsdUVBQXdFO0FBQ3hFLG1EQUE2QztBQUM3QyxpREFBcUQ7QUFDckQsK0NBQXVDO0FBRXZDLE1BQXFCLFdBQVksU0FBUSxxQ0FBcUI7SUFLMUQsS0FBSztRQUNELElBQUksT0FBTyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLHVDQUFZLEVBQUcsQ0FBQztRQUUzRCxJQUFJLEtBQUssR0FBRyxJQUFJLDZDQUFLLEVBQUUsQ0FBQztRQUV4QixLQUFLLENBQUMsT0FBTyxHQUFHLDJDQUFnQixDQUFDLFNBQVMsQ0FBQztRQUMzQyxLQUFLLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDNUIsT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUN4QixDQUFDLENBQUMsQ0FBQztRQUVILE9BQU8sQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRTVCLElBQUksQ0FBQyxFQUFFLEdBQUcsd0JBQVUsQ0FBQyxxQkFBcUIsQ0FBQyxZQUFZLENBQUMsQ0FBQyxZQUFZLFNBQUMscUJBQVcsRUFBRyxDQUFBO1FBQ3BGLEtBQUksSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFBQztZQUN4QyxJQUFJLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDLFlBQVksR0FBRyxLQUFLLENBQUE7U0FDdkM7SUFFTCxDQUFDO0lBRUQsTUFBTTtRQUVGLEtBQUksSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFBQztZQUN4QyxJQUFJLE1BQU0sR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDLFVBQVUsQ0FBQyxzQkFBc0IsU0FBQyxxQkFBSSxFQUFHLENBQUE7WUFDdEUscUNBQXFDO1lBQ3JDLE1BQU0sQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDLEVBQUUsQ0FBQyxjQUFjLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxFQUFFLEdBQUcsR0FBRyxDQUFBO1NBQzNEO0lBQ0wsQ0FBQztDQUNKO0FBaENELDhCQWdDQyJ9\",\"assetPath\":\"Assets/01.Scripts/SkillButton.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.UI\",\"name\":\"buttons\",\"type\":\"UnityEngine.UI.Button[]\",\"isArray\":true,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"GM\",\"type\":\"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default\",\"isArray\":false,\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"SkillButton\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 1f53b91b40e8d333a56b280504554506

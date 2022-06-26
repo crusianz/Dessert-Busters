@@ -7,9 +7,8 @@ import GameManager from './GameManager'
 
 export default class Block extends ZepetoScriptBehaviour {
 
-    public hp_t: Text
-    
-    public type: int
+    public hp_t: Text   
+    public isSelected: bool = false  
     hp: int
     GM: GameManager
     anim: Animator
@@ -20,8 +19,8 @@ export default class Block extends ZepetoScriptBehaviour {
         this.col = this.GetComponent<BoxCollider>()
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
         this.hp_t = this.gameObject.GetComponentInChildren<Text>()
-        if(this.type >= 1) this.hp = Mathf.RoundToInt(this.GM.layer * 2.5)
-        else this.hp = this.GM.layer
+        this.hp = this.GM.layer
+        this.GM.SkillUse.AddListener((int)=>this.SelectInit(int))
     }
 
     Update()
@@ -32,6 +31,10 @@ export default class Block extends ZepetoScriptBehaviour {
         }
         else this.col.enabled = true
         this.hp_t.text = String(this.hp)
+    }
+
+    SelectInit(num: int){
+        if(num == 2) this.isSelected = false
     }
 
     public Death()
@@ -49,6 +52,10 @@ export default class Block extends ZepetoScriptBehaviour {
             this.hp--
             this.anim.SetTrigger("Hit")
             
+        }
+
+        if(coll.CompareTag("Select")){
+            this.isSelected = true
         }
     }
 }

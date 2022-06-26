@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 3939882bc2dd0ef4fb8ccf8e5db68d18
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst Block_1 = require(\"./Block\");\r\nclass SpecialBlock
+    extends Block_1.default {\r\n    constructor() {\r\n        super(...arguments);\r\n       
+    this.height_list = [2, 2];\r\n        this.width_list = [2, 2];\r\n    }\r\n}\r\nexports.default
+    = SpecialBlock;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU3BlY2lhbCBCbG9jay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlNwZWNpYWwgQmxvY2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSxtQ0FBNEI7QUFFNUIsTUFBcUIsWUFBYSxTQUFRLGVBQUs7SUFBL0M7O1FBR0ksZ0JBQVcsR0FBVSxDQUFDLENBQUMsRUFBQyxDQUFDLENBQUMsQ0FBQTtRQUMxQixlQUFVLEdBQVUsQ0FBQyxDQUFDLEVBQUMsQ0FBQyxDQUFDLENBQUE7SUFJN0IsQ0FBQztDQUFBO0FBUkQsK0JBUUMifQ==","assetPath":"Assets/01.Scripts/Special
+    Block.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"type","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"height_list","type":"System.Int32[]","isArray":true,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"width_list","type":"System.Int32[]","isArray":true,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"height","type":"any","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"width","type":"any","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.UI","name":"hp_t","type":"UnityEngine.UI.Text","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"hp","type":"System.Int32","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"GM","type":"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AnimationModule","name":"anim","type":"UnityEngine.Animator","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.PhysicsModule","name":"col","type":"UnityEngine.BoxCollider","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"SpecialBlock","description":""},"isCompiled":true}'
+  typescriptHash: 1d0de589fe3bb8268872f4b2f9f012c9

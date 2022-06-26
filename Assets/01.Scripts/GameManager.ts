@@ -1,6 +1,7 @@
 import { isBreakOrContinueStatement } from 'typescript'
-import { Camera, GameObject, Rect, Screen, Transform, Vector3, Vector2, Input, LineRenderer, RaycastHit, Physics, LayerMask, Mathf, Quaternion } from 'UnityEngine'
-import {Text} from 'UnityEngine.UI';
+import { Camera, GameObject, Rect, Screen, Transform, Vector3, Input, LineRenderer, RaycastHit, Physics, LayerMask, Mathf, Quaternion,
+Debug, Color } from 'UnityEngine'
+import {Button, Text} from 'UnityEngine.UI';
 import { UnityEvent, UnityEvent$1 } from 'UnityEngine.Events'
 import { ZepetoCamera, ZepetoPlayers } from 'ZEPETO.Character.Controller'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
@@ -14,7 +15,10 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public AddingBall: UnityEvent
     public BallLanding: UnityEvent$1<GameObject>
     public ScoreUp: UnityEvent$1<int>
+    public SkillUse: UnityEvent$1<int>
     //#endregion 
+
+    public button: Button
 
     //#region 공 관련 변수
     private ball: GameObject
@@ -34,8 +38,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public shotTrigger: bool
     //#endregion 
 
+    skill_useable: boolean[] = [false, false, false, false, false]
+    skill_cooltime: int[] = [3,5,7,9]
+
     //#region 블록 스폰 관련 변수
     public layer: int
+    public phase : int
     public isBlockMoving: boolean
     //#endregion
 
@@ -45,7 +53,10 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public Scoretxt: Text
     public countTxt: Text
     LR: LineRenderer
+    BallLR: LineRenderer
+
     public curScore: int = 0
+    mob_spawnScore: int = 0
     scoreAddValue: int
     normal_mob: int
     spc_mob: int
@@ -56,12 +67,14 @@ export default class GameManager extends ZepetoScriptBehaviour {
     Awake() {
         //#region 이벤트 관리
         this.scoreAddValue = 30
-        this.ballfirstpos = new Vector3(-2.15, -12.35, 0)
+        this.ballfirstpos = new Vector3(-2.15, -8.6, 0)
         this.Down = new UnityEvent$1<GameObject>()
         this.Fall = new UnityEvent()
         this.Fall.AddListener(()=>this.AddLayer())
         this.BallLanding = new UnityEvent$1<GameObject>()
         this.BallLanding.AddListener((pos)=> this.PosSetting(pos))
+    
+        this.SkillUse = new UnityEvent$1<int>()
         this.ScoreUp = new UnityEvent$1<int>()
         this.ScoreUp.AddListener((type)=>this.ScoreAdd(type))
         this.AddingBall = new UnityEvent()
@@ -86,11 +99,15 @@ export default class GameManager extends ZepetoScriptBehaviour {
     }
 
     Start() {    
-        //ZepetoPlayers.instance.ZepetoCamera.gameObject.SetActive(false)
+        this.button.onClick.AddListener(()=>(this.SkillUse.Invoke(2)))
         //ZepetoPlayers.instance.characterData.minMoveDistance = 100
     }
     //#region 공 발사
     Update() {
+        
+        this.Cannon.transform.position = Vector3.Lerp(this.Cannon.transform.position, new Vector3(this.ballfirstpos.x, this.Cannon.transform.position.y, -4), 0.4)
+        //let charPos = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform 
+        //charPos.LookAt(this.Cannon.transform)
 
         this.shotable = true
         this.Scoretxt.text = "점수 : " + this.curScore.toString()
@@ -112,11 +129,11 @@ export default class GameManager extends ZepetoScriptBehaviour {
           }
          this.Fall.Invoke()
          this.addingCount = 0
+         this.countTxt.text = "x" + this.BallGroup.transform.childCount.toString()
         }
 
-        this.Cannon.transform.position = Vector3.Lerp(this.Cannon.transform.position, new Vector3(this.ballfirstpos.x, this.Cannon.transform.position.y, -4), 0.4)
+        
     }
-
     
     FixedUpdate(){
         if(this.timerStart && ++this.timerCount == 3)
@@ -131,50 +148,68 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 this.countTxt.text = ""
             }
         }
-        
     }
 
     Shot() {
         if(Input.GetMouseButtonDown(0))
         {
-            this.firstpos = Input.mousePosition
+            this.firstpos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10)
         }
 
         if(Input.GetMouseButton(0))
         {
-            this.secondpos = Input.mousePosition
+            this.secondpos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10)
             if((this.secondpos - this.firstpos).magnitude < 1) return;
             this.gap = (this.secondpos - this.firstpos).normalized
             this.gap = new Vector3(this.gap.y >= 0 ? this.gap.x : this.gap.x >= 0 ? 1 : -1, Mathf.Clamp(this.gap.y, 0.2, 1), 0)
-            //console.log(Input.mousePosition)
+            console.log(this.firstpos, this.secondpos)
 
             let ref = $ref<RaycastHit>();
-            /*let startpos = new Vector2(this.ballfirstpos.x, this.ballfirstpos.y)
-            let endpos = new Vector2(this.gap.x, this.gap.y)*/
             
-            if(Physics.Raycast(this.ballfirstpos, this.gap, ref, 10000, 1 << LayerMask.NameToLayer("Wall")))
-            {
-                
-            }
+            Physics.Raycast(this.ballfirstpos, this.gap, ref, 10000, 1 << LayerMask.NameToLayer("Wall") | 1 << LayerMask.NameToLayer("Block"))
+
             let hit = $unref(ref)
-            this.LR.SetPosition(0,this.ballfirstpos)
-            this.LR.SetPosition(1,hit.point)
-            this.Cannon.transform.GetChild(0).transform.rotation =  Quaternion.Euler(this.fGetAngle(this.LR.GetPosition(0),this.LR.GetPosition(1)) + 90 ,270, -270)
+            this.LR.SetPosition(0, this.firstpos)
+            this.LR.SetPosition(1, this.secondpos)
+            this.BallLR.SetPosition(0, this.ballfirstpos)
+            this.BallLR.SetPosition(1, hit.point)
+            console.log(this.ballfirstpos, hit.point)
+            this.Cannon.transform.GetChild(0).transform.rotation =  Quaternion.Euler(this.fGetAngle(this.BallLR.GetPosition(0),this.BallLR.GetPosition(1)) + 90 ,270, -270)
         }
 
         if(Input.GetMouseButtonUp(0))
         {
+
+            for(let i = 0; i <= 3; i++){
+                if(this.skill_cooltime[i] > 0)
+                this.skill_cooltime[i]--
+                else
+                this.skill_useable[i] = true
+            }
+
+            for(let i = 0; i < 3; i++)
+            {
+                if(this.skill_useable[i]){
+                    this.SkillUse.Invoke(i)
+                    this.skill_useable[i] = false
+                    this.skill_cooltime[i] = 3 + (2 * i)
+                }
+            }
+    
             this.LR.SetPosition(0,Vector3.zero)
             this.LR.SetPosition(1,Vector3.zero)
+            this.BallLR.SetPosition(0, Vector3.zero)
+            this.BallLR.SetPosition(1, Vector3.zero)
             this.timerStart = true
             this.isFirst = true
+
         }
     }
 
     PosSetting(pos: GameObject)
     {
         console.log("landing")
-        this.ballfirstpos = new Vector3(pos.transform.position.x, -12.47, 0)
+        this.ballfirstpos = new Vector3(pos.transform.position.x, -8.6, 0)
         this.isFirst = false   
     }
     //#endregion
@@ -183,11 +218,22 @@ export default class GameManager extends ZepetoScriptBehaviour {
     {
         switch(type)
         {
-            case 1 : this.curScore += this.scoreAddValue * 2
+            case 1 : {
+                     this.curScore += this.scoreAddValue * 2
+                     this.mob_spawnScore += this.scoreAddValue
+                    }
                      break;
-            default : this.curScore += this.scoreAddValue
+
+            default : {
+                      this.curScore += this.scoreAddValue
+                      this.mob_spawnScore += this.scoreAddValue
+                    }
         }
-        
+        while(this.mob_spawnScore >= 100){
+            this.mob_spawnScore -= 100
+            this.normal_mob++
+        }
+            
     }
 
     AddLayer()

@@ -9,6 +9,7 @@ TagManager:
   - Block
   - Ball
   - AddBall
+  - Select
   layers:
   - Default
   - TransparentFX
