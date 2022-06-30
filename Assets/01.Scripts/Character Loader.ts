@@ -10,12 +10,12 @@ export default class CharacterControllerSample extends ZepetoScriptBehaviour {
 
         var spawninfo = new SpawnInfo()
         spawninfo.position = this.gameObject.transform.position
-        ZepetoPlayers.instance.CreatePlayerWithZepetoId(WorldService.userId, spawninfo,true);
+        ZepetoPlayers.instance.CreatePlayerWithZepetoId("huh00833", spawninfo,true);
 
         ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(() => {
             let _player: LocalPlayer = ZepetoPlayers.instance.LocalPlayer;
             ZepetoPlayers.instance.ZepetoCamera.gameObject.SetActive(false)
-            ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.localScale = new Vector3(6, 6, 6)
+            ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.localScale = new Vector3(4, 4, 4)
         });
         
     }

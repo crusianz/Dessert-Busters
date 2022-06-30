@@ -19,7 +19,20 @@ ScriptedImporter:
   WrapperFilters: []
   wrapperOutputDirectory: Generated
   compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
-    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
-    Buttons extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n   
-    }\r\n}\r\nexports.default = Buttons;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnV0dG9ucy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJ1dHRvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFFckQsTUFBcUIsT0FBUSxTQUFRLHFDQUFxQjtJQUV0RCxLQUFLO0lBRUwsQ0FBQztDQUVKO0FBTkQsMEJBTUMifQ==","assetPath":"Assets/01.Scripts/Buttons.ts","manifest":{"properties":[],"name":"Buttons","description":""},"isCompiled":true}'
-  typescriptHash: 8801ad1afcf32c0b6bb7e15780396c81
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst UnityEngine_EventSystems_EventTrigger_1
+    = require(\"UnityEngine.EventSystems.EventTrigger\");\r\nconst UnityEngine_EventSystems_1
+    = require(\"UnityEngine.EventSystems\");\r\nconst GameManager_1 = require(\"./GameManager\");\r\nclass
+    Buttons extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    this.GM = UnityEngine_1.GameObject.FindGameObjectWithTag(\"MainCamera\").GetComponent($typeof(GameManager_1.default));\r\n       
+    var trigger = this.gameObject.GetComponent($typeof(UnityEngine_EventSystems_1.EventTrigger));\r\n       
+    var entry = new UnityEngine_EventSystems_EventTrigger_1.Entry();\r\n        var
+    disentry = new UnityEngine_EventSystems_EventTrigger_1.Entry();\r\n        entry.eventID
+    = UnityEngine_EventSystems_1.EventTriggerType.PointerEnter;\r\n        entry.callback.AddListener(()
+    => {\r\n            this.GM.clickable = false;\r\n            console.log(\"no
+    touch!\");\r\n        });\r\n        disentry.eventID = UnityEngine_EventSystems_1.EventTriggerType.PointerExit;\r\n       
+    disentry.callback.AddListener(() => {\r\n            this.GM.clickable = true;\r\n           
+    console.log(\"yes touch!\");\r\n        });\r\n        trigger.triggers.Add(entry);\r\n       
+    trigger.triggers.Add(disentry);\r\n    }\r\n}\r\nexports.default = Buttons;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnV0dG9ucy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJ1dHRvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkNBQXNDO0FBQ3RDLGlHQUE0RDtBQUM1RCx1RUFBd0U7QUFDeEUsK0NBQXVDO0FBRXZDLE1BQXFCLE9BQVEsU0FBUSxxQ0FBcUI7SUFLdEQsS0FBSztRQUVELElBQUksQ0FBQyxFQUFFLEdBQUcsd0JBQVUsQ0FBQyxxQkFBcUIsQ0FBQyxZQUFZLENBQUMsQ0FBQyxZQUFZLFNBQUMscUJBQVcsRUFBRyxDQUFBO1FBRXBGLElBQUksT0FBTyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLHVDQUFZLEVBQUcsQ0FBQztRQUUzRCxJQUFJLEtBQUssR0FBRyxJQUFJLDZDQUFLLEVBQUUsQ0FBQztRQUN4QixJQUFJLFFBQVEsR0FBRyxJQUFJLDZDQUFLLEVBQUUsQ0FBQztRQUUzQixLQUFLLENBQUMsT0FBTyxHQUFHLDJDQUFnQixDQUFDLFlBQVksQ0FBQTtRQUM3QyxLQUFLLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDNUIsSUFBSSxDQUFDLEVBQUUsQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFBO1lBQ3pCLE9BQU8sQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLENBQUE7UUFDNUIsQ0FBQyxDQUFDLENBQUM7UUFFSCxRQUFRLENBQUMsT0FBTyxHQUFHLDJDQUFnQixDQUFDLFdBQVcsQ0FBQztRQUNoRCxRQUFRLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxHQUFFLEVBQUU7WUFDOUIsSUFBSSxDQUFDLEVBQUUsQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFBO1lBQ3hCLE9BQU8sQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUE7UUFDN0IsQ0FBQyxDQUFDLENBQUE7UUFFRixPQUFPLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUM1QixPQUFPLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxRQUFRLENBQUMsQ0FBQztJQUNuQyxDQUFDO0NBRUo7QUE5QkQsMEJBOEJDIn0=","assetPath":"Assets/01.Scripts/Buttons.ts","manifest":{"properties":[{"assembly":"","name":"GM","type":"C:/Users/huhsungeun/Documents/GitHub/Dessert-Busters/Assets/01.Scripts/GameManager.default","isArray":false,"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Buttons","description":""},"isCompiled":true}'
+  typescriptHash: 1419cde99043620338e36e0f9c049ee8

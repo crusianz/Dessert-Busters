@@ -55,13 +55,24 @@ MonoBehaviour:
     keys:
     - hp
     - hp_t
+    - isSelected
+    - particle
+    - type
     unityValues:
     - {fileID: 0}
     - {fileID: 1360137052717383754}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     values:
     - '{"type":"System.Int32, mscorlib","value":"1"}'
     - 
-    unityArrayValues: []
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":0,\"length\":1,\"type\":\"UnityEngine.Object,
+      UnityEngine.CoreModule\",\"isUnity\":true}"}'
+    - '{"type":"System.Int32, mscorlib","value":"0"}'
+    unityArrayValues:
+    - {fileID: 2863601391367169487, guid: f9873f7006b5f458faf1dc8e7275e0c3, type: 3}
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: e96192340781a8847a057101cc86bb74, type: 3}
     isExpaned: 0
@@ -263,7 +274,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2f3703b68435c41aab3bb9d087ca0c59, type: 3}
     m_FontSize: 2
     m_FontStyle: 0
     m_BestFit: 0

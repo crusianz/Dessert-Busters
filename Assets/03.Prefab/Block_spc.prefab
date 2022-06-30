@@ -61,11 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 4458252877524076426, guid: 3939882bc2dd0ef4fb8ccf8e5db68d18, type: 3}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.keys.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.values.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.keys.Array.data[2]
@@ -78,6 +78,10 @@ PrefabInstance:
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.keys.Array.data[4]
       value: width_list
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.keys.Array.data[5]
+      value: isSelected
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.values.Array.data[2]
@@ -94,8 +98,16 @@ PrefabInstance:
         mscorlib\",\"isUnity\":false}"}'
       objectReference: {fileID: 0}
     - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.values.Array.data[5]
+      value: '{"type":"System.Boolean, mscorlib","value":"False"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: script.unityValues.Array.size
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360137051704914218, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
+      propertyPath: script.unityValues.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1360137052717383754, guid: 03e4954bd97eb6541ac64eebd1d147a6, type: 3}
       propertyPath: m_Text

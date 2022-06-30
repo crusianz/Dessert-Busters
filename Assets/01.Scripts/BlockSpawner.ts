@@ -17,6 +17,7 @@ public BallGroup: GameObject
 public isBlockMoving: boolean
 public isSpcSpawning: boolean
 public spcScore: int
+public spcReq: int
 public downPower: number
 public QI: Quaternion
 count: int
@@ -132,8 +133,8 @@ count: int
 
     spcCount(num: int)
     {
-        if(this.spcScore >= 1000){
-            this.spcScore -= 1000
+        if(this.spcScore >= this.spcReq){
+            this.spcScore -= this.spcReq
             this.isSpcSpawning = true
         }
         this.spcScore += this.GM.scoreAddValue

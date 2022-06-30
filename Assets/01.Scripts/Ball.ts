@@ -1,6 +1,6 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { UnityEvent } from "UnityEngine.Events";
-import { Transform, Vector3, Time, Rigidbody, ForceMode, Collision, Collider, SphereCollider, Input, Camera, Mathf, GameObject, Vector2, Object, Quaternion, Random, Physics} from 'UnityEngine';
+import { Transform, Vector3, Time, Rigidbody, ForceMode, Collision, Collider, SphereCollider, Input, Camera, Mathf, GameObject, Vector2, Object, Quaternion, Random, Physics, MeshRenderer} from 'UnityEngine';
 import { isModuleBlock } from 'typescript';
 import GameManager from './GameManager';
 
@@ -38,7 +38,7 @@ export default class Ball extends ZepetoScriptBehaviour {
     Update()
     {
         
-        if(this.transform.transform.position.y <= -8.6 && this.iscol){
+        if(this.transform.transform.position.y <= -8.4 && this.iscol){
             this.rb.velocity = Vector3.zero;
             this.isLanding = true
             this.moving = false
@@ -48,8 +48,13 @@ export default class Ball extends ZepetoScriptBehaviour {
             if(this.zemini){
                 Object.Destroy(this.gameObject)
             }
-
             else this.transform.position = Vector3.Lerp(this.transform.position, this.GM.ballfirstpos, 0.25)
+
+            if((this.transform.position - this.GM.ballfirstpos).magnitude < 1){
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false
+                this.gameObject.GetComponent<SphereCollider>().enabled = false
+
+            } 
         }
 
 
@@ -58,7 +63,8 @@ export default class Ball extends ZepetoScriptBehaviour {
     
     Launch(pos: Vector3)
     {
-        if(this.zemini) console.log(this.rb.velocity)
+        this.gameObject.GetComponent<MeshRenderer>().enabled = true
+        this.gameObject.GetComponent<SphereCollider>().enabled = true
         this.iscol = false
         this.isLanding = false
         this.GM.shotTrigger = true
@@ -88,8 +94,12 @@ export default class Ball extends ZepetoScriptBehaviour {
         else if (coll.CompareTag("Block") || coll.CompareTag("Wall"))
         {
             if (coll.CompareTag("Block") && this.skill_use && this.skill_type == 0 && !this.zemini){
-                Object.Instantiate(this.zeminiball, this.transform.position, Quaternion.Euler(0,0,0), this.GM.BallGroup.transform)
+                Object.Instantiate(this.zeminiball, this.transform.position, Quaternion.Euler(0,0,0))
                 this.skill_use = false
+            }
+
+            else if (coll.CompareTag("Wall") && this.zemini){
+                Object.Destroy(this.gameObject)
             }
             var pos = this.rb.velocity.normalized;
             if (pos.magnitude != 0 && pos.y < 0.15 && pos.y > -0.15)
