@@ -16,6 +16,10 @@ export default class Portal extends ZepetoScriptBehaviour {
         })
     }
 
+    OnTriggerEnter(){
+        this.joinWindow.SetActive(true)
+    }
+
 
 
 }

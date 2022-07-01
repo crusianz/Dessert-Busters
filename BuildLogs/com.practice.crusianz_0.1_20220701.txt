@@ -1,0 +1,297 @@
+[World Settings]
+world id             com.practice.crusianz
+version              0.1                 
+max clients          10                  
+orientation          vertical            
+disable invite       false               
+disable room list    false               
+disable private room false               
+
+[Build Manifest]
+[scenes]
+40 mb                assets/05.scene/lobby.unity
+217 kb               assets/05.scene/brickbreaker.unity
+[assets]
+13 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_base.png
+560 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/idle.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_off.anim
+11 mb                assets/boxophobic/skybox cubemap extended/demo/textures/polyverse skies - night sky.exr
+35 kb                packages/zepeto.character.controller/runtime/_resources/inputactions/zepetoinputcontrol.inputactions
+600 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingslight.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action1.anim
+21 kb                assets/boxophobic/skybox cubemap extended/core/shaders/skybox cubemap blend.shader
+1 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.png
+295 kb               packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimatorv2.controller
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/4_ok.anim
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_ziggle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/walk.anim
+374 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverunfast.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_on.anim
+828 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moveturn.anim
+2 kb                 packages/zepeto.buildit.common/common/cooltime_commons/data/builditglass.shader
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingdeep.anim
+416 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverun.anim
+2 kb                 assets/gui pro kit - simple casual/sprite/component/button/button_demo_common/btn_rectangle00_n_purple.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_move.anim
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_horizontal.prefab
+1 mb                 assets/boxophobic/skybox cubemap extended/demo/textures/polyverse skies - blue sky.png
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_off.anim
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandleorigin.controller
+546 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingroll.anim
+301 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/falling.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action2.anim
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_vertical.prefab
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_icon.png
+618 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpidle.anim
+1 kb                 packages/com.unity.inputsystem/inputsystem/editor/icons/inputsystemuiinputmodule@64.png
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/stamp.anim
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_icon.png
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandle.controller
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdash.anim
+4 mb                 assets/02.resources/fonts/notosanskr-thin.otf
+1 kb                 packages/zepeto.character.controller/runtime/_resources/camera/zepetocamera.prefab
+940 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/run.anim
+461 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalkfast.anim
+3 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/charactershadow.prefab
+3 kb                 assets/boxophobic/skybox cubemap extended/demo/materials/skybox cubemap extended blend.mat
+5 kb                 packages/zepeto.buildit.common/common/cooltime_commons/data/builditstandard.shader
+12 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_base.png
+442 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpmove.anim
+4 mb                 assets/02.resources/fonts/notosanskr-medium.otf
+4 mb                 assets/02.resources/fonts/notosanskr-black.otf
+795 b                packages/zepeto.buildit.common/common/cooltime_commons/data/build it effect addictive.shader
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalk.anim
+1 kb                 packages/zepeto.buildit.common/common/cooltime_commons/data/builditunlit.shader
+18 kb                packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimator.controller
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/gesture.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/eventsystem.prefab
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.mat
+1014 kb              packages/zepeto.character.controller/runtime/_resources/animations/base/v2/idle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/fall_end.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_on.anim
+464 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdouble.anim
+1 kb                 assets/03.prefab/character loader.prefab
+428 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/hand_idle_01.anim
+31 kb                packages/com.unity.inputsystem/inputsystem/plugins/playerinput/defaultinputactions.inputactions
+2 kb                 packages/zepeto.buildit.common/common/cooltime_commons/data/build it select box.shader
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_ziggle.anim
+6 kb                 assets/03.prefab/closebtn 1.prefab
+13 kb                assets/02.resources/particle resource/muffin_particle(2).png
+13 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_base.png
+2 kb                 assets/03.prefab/block_rollcake.prefab
+2 kb                 assets/02.resources/new material 2.mat
+28 kb                assets/02.resources/particle resource/spcaramelapple_particle(s3).png
+34 kb                assets/02.resources/block_rollcake02.fbx
+1 kb                 assets/gui pro kit - simple casual/sprite/component/button/button_demo_common/btn_iconbutton_circle_90_purple.png
+34 kb                assets/02.resources/block_pudding.fbx
+51 kb                assets/02.resources/스킬표시버튼_test.png
+690 kb               assets/sp_particle system_gumi.prefab
+54 kb                assets/03.prefab/gummybear.prefab
+2 kb                 assets/gui pro kit - simple casual/prefabs/prefabs_component_buttons/btn_rectangle00_n_common_purple.prefab
+24 kb                assets/02.resources/block_01_texture_crepe.png
+460 kb               assets/sp_particle system_icecream.prefab
+35 kb                packages/zepeto.character.controller/runtime/_resources/inputactions/zepetoinputcontrol.inputactions
+600 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingslight.anim
+5 kb                 assets/gui pro kit - simple casual/prefabs/prefabs_component_labels/label_tag04_purple.prefab
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_off.anim
+14 kb                assets/02.resources/particle resource/cake_particle(3).png
+19 kb                assets/03.prefab/ui prefab/guide.prefab
+2 kb                 assets/02.resources/materials/select box.mat
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action1.anim
+115 kb               assets/02.resources/spblock_icecreamailen.png
+35 kb                assets/02.resources/particle resource/spcaramelapple_particle(1).png
+12 kb                assets/02.resources/particle resource/spcorncandy_particle(1).png
+1 kb                 assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_exit.png
+11 kb                assets/02.resources/particle resource/spcorncandy_particle(s1).png
+1 kb                 assets/02.resources/animation/block/block_idle.anim
+979 b                assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_close.png
+24 kb                assets/03.prefab/block_spc.prefab
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_ziggle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/walk.anim
+7 kb                 assets/03.prefab/ball.prefab
+37 kb                assets/02.resources/leftleg.png
+11 kb                assets/02.resources/particle resource/spicecreamalien_particle(s1).png
+19 mb                assets/02.resources/jellyslime.fbx
+744 kb               assets/02.resources/gummybear.fbx
+19 kb                assets/02.resources/particle resource/rolecake_particle(1).png
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_on.anim
+2 kb                 assets/03.prefab/block_crepe.prefab
+568 kb               assets/particle system_cake.prefab
+4 kb                 assets/gui pro kit - simple casual/sprite/component/label/label_ribbon00_color_blue.png
+28 kb                assets/02.resources/particle resource/spcaramelapple_particle(s2).png
+5 kb                 assets/03.prefab/waytoplay 1.prefab
+7 kb                 assets/02.resources/particle resource/cake_particle(1-1).png
+2 kb                 assets/02.resources/new material 4.mat
+5 mb                 assets/02.resources/item_ball.fbx
+6 kb                 assets/03.prefab/retrybtn.prefab
+1 kb                 assets/02.resources/animation/specialmonster/slime/jellyslime.controller
+2 kb                 assets/gui pro kit - simple casual/sprite/component/button/button_demo_common/btn_rectangle00_n_purple.png
+34 kb                assets/02.resources/spblock_icecreamailen.fbx
+40 kb                assets/02.resources/eyes01.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_move.anim
+37 kb                assets/02.resources/particle resource/spicecreamalien_particle(2).png
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_horizontal.prefab
+34 kb                assets/02.resources/block_02_texture_cake.png
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandleorigin.controller
+546 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingroll.anim
+2 kb                 assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_best01.png
+8 kb                 assets/02.resources/particle resource/spcorncandy_particle(s3).png
+29 kb                assets/02.resources/main_ball.png
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action2.anim
+6 kb                 assets/03.prefab/ui prefab/button.prefab
+2 kb                 assets/02.resources/new material.mat
+345 kb               assets/sp_particle system_jelly.prefab
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_vertical.prefab
+39 kb                assets/03.prefab/icecreamalien.prefab
+1 kb                 packages/com.unity.inputsystem/inputsystem/editor/icons/inputsystemuiinputmodule@64.png
+51 kb                assets/02.resources/spblock_jellyslime 1.fbx
+45 kb                assets/02.resources/block_04_rollcake.png
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandle.controller
+39 kb                assets/02.resources/body.png
+9 kb                 assets/02.resources/particle resource/spcorncandy_particle(s2).png
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdash.anim
+63 kb                assets/03.prefab/corncandywolf.prefab
+2 kb                 assets/03.prefab/spblock_applecaramelghost.prefab
+25 kb                assets/02.resources/lefthead.png
+14 kb                assets/02.resources/particle resource/rolecake_particle(2).png
+34 kb                assets/02.resources/block_cake.fbx
+1017 b               packages/zepeto.character.controller/runtime/_resources/images/ellipse 28.png
+461 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalkfast.anim
+7 kb                 assets/02.resources/particle resource/pudding_particle(1-1).png
+568 kb               assets/particle system_rolecake.prefab
+34 kb                assets/02.resources/block_muffin.fbx
+3 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/charactershadow.prefab
+2 kb                 assets/prefab/zepetostylelight.prefab
+68 kb                assets/02.resources/conecandywolf_arm.png
+7 kb                 assets/02.resources/particle resource/muffin_particle(2-2).png
+12 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_base.png
+2 kb                 assets/03.prefab/block_cake.prefab
+15 kb                assets/02.resources/particle resource/pudding_particle(2).png
+442 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpmove.anim
+13 kb                assets/02.resources/particle resource/crape_particle(1).png
+2 kb                 assets/03.prefab/block_muffin.prefab
+460 kb               assets/sp_particle system_caramelapple.prefab
+51 kb                assets/02.resources/skillbutton_caramelappleghost.png
+10 kb                assets/02.resources/particle resource/rolecake_particle(2-2).png
+41 kb                assets/02.resources/skillbutton_icecreamailen.png
+36 kb                assets/04. resource/sound/in-game_soundeffect/대포발사_1.wav
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/gesture.anim
+34 kb                assets/02.resources/spblock_gumibear.fbx
+2 kb                 assets/03.prefab/spblock_gumibear.prefab
+18 kb                packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimator.controller
+3 kb                 assets/03.prefab/addball.prefab
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_on.anim
+38 kb                assets/02.resources/eyes02.png
+240 b                assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_pause.png
+21 kb                assets/02.resources/particle resource/spgumi_particle(s2) 1.png
+4 mb                 assets/02.resources/caramelappleghost.fbx
+1 mb                 assets/04. resource/sound/in-game_bgm/신남+악동ver.wav
+1 kb                 assets/03.prefab/character loader.prefab
+3 kb                 assets/gui pro kit - simple casual/sprite/component/label/label_tag04_color_purple.png
+15 kb                assets/02.resources/particle resource/muffin_particle(1).png
+80 kb                assets/04. resource/gui pro kit - simple casual/fonts/museomoderno-extrabold.ttf
+2 kb                 assets/03.prefab/block_pudding.prefab
+4 kb                 assets/02.resources/animation/block/block.controller
+9 kb                 assets/02.resources/particle resource/rolecake_particle(1-1).png
+5 kb                 assets/02.resources/animation/specialmonster/ghost/ghost_idle.anim
+560 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/idle.anim
+13 kb                assets/02.resources/particle resource/pudding_particle(1).png
+687 b                assets/gui pro kit - simple casual/sprite/component/label/label_ribbon00_icon.png
+28 kb                assets/02.resources/item_ball.png
+17 kb                assets/03.prefab/platform.prefab
+8 kb                 assets/prefab/cannon.prefab
+34 kb                assets/02.resources/spblock_candycornwerewolf.fbx
+13 kb                assets/02.resources/particle resource/crape_particle(2).png
+2 kb                 assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_restart.png
+5 kb                 assets/03.prefab/stopbutton.prefab
+2 kb                 assets/03.prefab/spblock_icecreamailen.prefab
+5 mb                 assets/02.resources/main_ball.fbx
+75 kb                assets/04. resource/gui pro kit - simple casual/fonts/quicksand-semibold.ttf
+26 kb                assets/03.prefab/block.prefab
+5 kb                 assets/03.prefab/zemini ball.prefab
+454 kb               assets/particle system_pudding.prefab
+18 kb                assets/02.resources/particle resource/cake_particle(2).png
+1 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.png
+80 kb                assets/02.resources/spblock_gumibear.png
+295 kb               packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimatorv2.controller
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/4_ok.anim
+46 kb                assets/02.resources/skillbutton_corncandywolf.png
+374 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverunfast.anim
+828 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moveturn.anim
+70 kb                assets/02.resources/particle resource/spjelly_particle(1).png
+489 kb               assets/02.resources/background_rgb 1.jpg
+1 mb                 assets/04. resource/sound/button_soundeffect/스킬사용_1.wav
+1 kb                 assets/gui pro kit - simple casual/sprite/demo/demo_icon/icon_whiteicon_info.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingdeep.anim
+22 kb                assets/02.resources/spblock_candycornwerewolf.png
+12 mb                assets/02.resources/icecreamalien.fbx
+5 kb                 assets/02.resources/animation/block/block_hit.anim
+416 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverun.anim
+2 kb                 assets/03.prefab/spblock_candycornwerewolf.prefab
+27 kb                assets/03.prefab/uicontroller_touchpad_vertical.prefab
+22 kb                assets/02.resources/particle resource/spgumi_particle(s3) 1.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle.anim
+37 kb                assets/03.prefab/caramelappleghost.prefab
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_off.anim
+5 kb                 assets/03.prefab/spblock_jellyslime 1.prefab
+205 kb               assets/02.resources/spblock_applecaramelghost.png
+301 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/falling.anim
+14 kb                assets/02.resources/particle resource/crape_particle(2-2).png
+75 kb                assets/04. resource/gui pro kit - simple casual/fonts/quicksand-bold.ttf
+64 kb                assets/02.resources/particle resource/spgumi_particle(3) 1.png
+56 kb                assets/02.resources/particle resource/spgumi_particle(1) 1.png
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_icon.png
+79 mb                assets/02.resources/corncandywolf.fbx
+32 kb                assets/02.resources/particle resource/spcaramelapple_particle(s1).png
+1 kb                 assets/02.resources/animation/specialmonster/ghost/caramelappleghost.controller
+618 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpidle.anim
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/stamp.anim
+44 kb                assets/02.resources/leftarm.png
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_icon.png
+6 kb                 assets/03.prefab/outbtn.prefab
+36 kb                assets/02.resources/skillbutton_jellysilme.png
+102 kb               assets/02.resources/block_05_muffin.png
+4 mb                 assets/02.resources/fonts/notosanskr-thin.otf
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle_f.anim
+39 kb                assets/02.resources/body02.png
+1 kb                 packages/zepeto.character.controller/runtime/_resources/camera/zepetocamera.prefab
+940 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/run.anim
+7 kb                 assets/02.resources/particle resource/cake_particle(2-2).png
+4 mb                 assets/02.resources/fonts/notosanskr-medium.otf
+9 kb                 assets/02.resources/particle resource/muffin_particle(1-1).png
+7 kb                 assets/02.resources/particle resource/cake_particle(3-3).png
+10 kb                assets/02.resources/particle resource/crape_particle(1-1).png
+13 kb                assets/02.resources/animation/specialmonster/slime/slime_idle.anim
+25 kb                assets/04. resource/sound/in-game_soundeffect/공바운스_1.wav
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalk.anim
+35 kb                assets/02.resources/particle resource/spicecreamalien_particle(1).png
+34 kb                assets/02.resources/block_crepe.fbx
+319 b                assets/02.resources/bouncy.physicmaterial
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/eventsystem.prefab
+53 kb                assets/02.resources/platform.fbx
+1014 kb              packages/zepeto.character.controller/runtime/_resources/animations/base/v2/idle.anim
+67 kb                assets/03.prefab/buttonmanager.prefab
+20 kb                assets/03.prefab/jellyslime.prefab
+454 kb               assets/particle system_muffin.prefab
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/fall_end.anim
+17 kb                assets/02.resources/particle resource/spjelly_particle(s1).png
+9 kb                 assets/02.resources/particle resource/rolecake_particle(3-3).png
+2 kb                 assets/gui pro kit - simple casual/sprite/component/button/button_demo_common/btn_rectangle01.png
+464 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdouble.anim
+56 kb                assets/02.resources/particle resource/spgumi_particle(2) 1.png
+460 kb               assets/sp_particle system_corncandy.prefab
+428 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/hand_idle_01.anim
+8 kb                 assets/02.resources/particle resource/pudding_particle(2-2).png
+31 kb                packages/com.unity.inputsystem/inputsystem/plugins/playerinput/defaultinputactions.inputactions
+34 kb                assets/02.resources/spblock_applecaramelghost.fbx
+86 kb                assets/02.resources/block_03_pudding.png
+568 kb               assets/03.prefab/crepe_particle.prefab
+3 kb                 assets/gui pro kit - simple casual/sprite/component/label/label_ribbon00_color_orange.png
+24 kb                assets/02.resources/particle resource/spgumi_particle(s1) 1.png
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_ziggle.anim
+[resources]
+0 b                  assets/resources    
+0 b                  assets/textmesh pro/resources
+[streamingAssets]

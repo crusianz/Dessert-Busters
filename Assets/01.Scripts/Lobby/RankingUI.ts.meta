@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: aea77f9e193bcd04bb12171f47849dbb
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_UI_1 = require(\"UnityEngine.UI\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    ZEPETO_Script_Leaderboard_1 = require(\"ZEPETO.Script.Leaderboard\");\r\nclass
+    RankingUI extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    ZEPETO_Script_Leaderboard_1.LeaderboardAPI.SetScore(this.leaderboardID, UnityEngine_1.Random.Range(30,
+    3300), this.Success);\r\n        ZEPETO_Script_Leaderboard_1.LeaderboardAPI.GetRangeRank(this.leaderboardID,
+    this.startrank, this.endrank, this.resetrule, false, (result) => {\r\n           
+    let yValue = 0;\r\n            if (result.rankInfo.myRank)\r\n               
+    console.log(result.rankInfo.rankList);\r\n            if (result.rankInfo.rankList)
+    {\r\n                for (let i = 0; i < result.rankInfo.rankList.length; ++i)
+    {\r\n                    var rank = result.rankInfo.rankList.get_Item(i);\r\n                   
+    UnityEngine_1.Object.Instantiate(this.contentbase, new UnityEngine_1.Vector3(0,
+    yValue, 0), UnityEngine_1.Quaternion.identity, this.parents.transform);\r\n                   
+    var content = this.parents.transform.GetChild(i);\r\n                    content.transform.GetChild(0).GetComponent($typeof(UnityEngine_UI_1.Text)).text
+    = rank.rank.toString();\r\n                    content.transform.GetChild(1).GetComponent($typeof(UnityEngine_UI_1.Text)).text
+    = rank.name;\r\n                    content.transform.GetChild(2).GetComponent($typeof(UnityEngine_UI_1.Text)).text
+    = rank.score.toString();\r\n                    yValue -= 1;\r\n               
+    }\r\n            }\r\n        });\r\n    }\r\n    OnResult(result) {\r\n    }\r\n   
+    Success(res) {\r\n        console.log(res.isSuccess);\r\n    }\r\n}\r\nexports.default
+    = RankingUI;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmFua2luZ1VJLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiUmFua2luZ1VJLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTZFO0FBRTdFLG1EQUE0QztBQUM1QyxpREFBcUQ7QUFDckQseUVBQTZHO0FBRTdHLE1BQXFCLFNBQVUsU0FBUSxxQ0FBcUI7SUFTeEQsS0FBSztRQUNELDBDQUFjLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxhQUFhLEVBQUUsb0JBQU0sQ0FBQyxLQUFLLENBQUMsRUFBRSxFQUFFLElBQUksQ0FBQyxFQUFFLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUNqRiwwQ0FBYyxDQUFDLFlBQVksQ0FBQyxJQUFJLENBQUMsYUFBYSxFQUFFLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsU0FBUyxFQUFFLEtBQUssRUFBRSxDQUFDLE1BQTRCLEVBQUMsRUFBRTtZQUNqSSxJQUFJLE1BQU0sR0FBRyxDQUFDLENBQUE7WUFDZCxJQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUMsTUFBTTtnQkFBRSxPQUFPLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsUUFBUSxDQUFDLENBQUE7WUFHaEUsSUFBRyxNQUFNLENBQUMsUUFBUSxDQUFDLFFBQVEsRUFBQztnQkFDeEIsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRSxFQUFFLENBQUMsRUFBRTtvQkFDdEQsSUFBSSxJQUFJLEdBQUcsTUFBTSxDQUFDLFFBQVEsQ0FBQyxRQUFRLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDO29CQUNoRCxvQkFBTSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLElBQUkscUJBQU8sQ0FBQyxDQUFDLEVBQUUsTUFBTSxFQUFFLENBQUMsQ0FBQyxFQUFFLHdCQUFVLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxPQUFPLENBQUMsU0FBUyxDQUFDLENBQUE7b0JBQzVHLElBQUksT0FBTyxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQTtvQkFDaEQsT0FBTyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsWUFBWSxTQUFDLHFCQUFJLEdBQUksSUFBSSxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFFLENBQUE7b0JBQzlFLE9BQU8sQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFlBQVksU0FBQyxxQkFBSSxHQUFJLElBQUksR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFBO29CQUNuRSxPQUFPLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxZQUFZLFNBQUMscUJBQUksR0FBSSxJQUFJLEdBQUcsSUFBSSxDQUFDLEtBQUssQ0FBQyxRQUFRLEVBQUUsQ0FBQTtvQkFDL0UsTUFBTSxJQUFJLENBQUMsQ0FBQTtpQkFDZDthQUNKO1FBQ0wsQ0FBQyxDQUFFLENBQUE7SUFDUCxDQUFDO0lBRUQsUUFBUSxDQUFDLE1BQTRCO0lBRXJDLENBQUM7SUFFRCxPQUFPLENBQUMsR0FBcUI7UUFFekIsT0FBTyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDLENBQUE7SUFDOUIsQ0FBQztDQUVKO0FBdkNELDRCQXVDQyJ9","assetPath":"Assets/01.Scripts/Lobby/RankingUI.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"leaderboardID","type":"System.String","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"startrank","type":"System.Int32","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"endrank","type":"System.Int32","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"ZEPETO.Script.Leaderboard","name":"resetrule","type":"ZEPETO.Script.Leaderboard.ResetRule","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"contentbase","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"parents","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"RankingUI","description":""},"isCompiled":true}'
+  typescriptHash: 0f18045bb6b27c043a9ecfc18dd439a8

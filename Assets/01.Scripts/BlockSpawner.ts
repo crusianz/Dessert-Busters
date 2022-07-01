@@ -153,6 +153,7 @@ count: int
         for(let i = 0; i < this.BlockGroup.transform.childCount-1; i++){
             if(this.BlockGroup.transform.GetChild(i).CompareTag("AddBall")) continue
             else {
+                if(this.BlockGroup.transform.GetChild(i) == null) continue
                 this.BlockGroup.transform.GetChild(i).GetComponent<Block>().isSelected = true
                 v++
                 if(v >= this.BlockGroup.transform.childCount/5)
