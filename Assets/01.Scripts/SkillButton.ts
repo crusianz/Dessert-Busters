@@ -1,4 +1,4 @@
-import { Camera, Color, GameObject, Vector3 } from 'UnityEngine'
+import { AudioClip, AudioSource, Camera, Color, GameObject, Random, Vector3 } from 'UnityEngine'
 import {Entry} from "UnityEngine.EventSystems.EventTrigger";
 import {EventTrigger, EventTriggerType} from "UnityEngine.EventSystems";
 import { Button, Image, Text } from 'UnityEngine.UI'
@@ -7,17 +7,21 @@ import GameManager from './GameManager'
 
 export default class SkillButton extends ZepetoScriptBehaviour {
 
+    audio: AudioSource
+    public BtnFx: AudioClip[]
     public buttons: Button[]
     public image: Image[]
     GM: GameManager
 
     Start() {    
+        this.audio = this.GetComponent<AudioSource>()
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
         for(let i: int = 0; i < this.buttons.length; i++){
             this.buttons[i].interactable = false
             if(i == 4) continue;
             this.buttons[i].onClick.AddListener(()=>{
                 this.GM.SkillUse.Invoke(i)
+                this.audio.PlayOneShot(Random.Range(0,1) < 1 ? this.BtnFx[0] : this.BtnFx[1])
             })
         }
         

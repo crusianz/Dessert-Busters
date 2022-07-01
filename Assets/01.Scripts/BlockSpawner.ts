@@ -2,6 +2,7 @@ import { GameObject, Object, Quaternion, Random, Time, Transform, Vector3, Mathf
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import GameManager from './GameManager'
 import Ball from './Ball'
+import Block from './Block'
 
 export default class BlockSpawner extends ZepetoScriptBehaviour {
 
@@ -20,6 +21,7 @@ public spcScore: int
 public spcReq: int
 public downPower: number
 public QI: Quaternion
+wolf_skill_ing: bool
 count: int
 
     Start() {
@@ -31,6 +33,7 @@ count: int
         this.GM.Down.AddListener((pos) => this.AddBall(pos))
         this.GM.ScoreUp.AddListener((num)=>this.spcCount(num))
         this.GM.SkillUse.AddListener((num)=>this.Penetration(num))
+        this.GM.WolfSkill.AddListener(()=>this.WolfSelect())
         this.QI = Quaternion.Euler(0,0,0)
     }
 
@@ -41,9 +44,7 @@ count: int
         this.count = 0
         let randBl = Random.Range(0, 24)
         this.BlockCount = this.BlockGroup.transform.childCount
-        //#region 특수블록 소환
-        
-        //#endregion
+
         if(this.BlockCount < 5 || this.GM.curScore < 300) this.count = randBl < 16 ? 1 : 2
         if((this.BlockCount > 4 && this.BlockCount < 15) || (this.GM.curScore >= 300 && this.GM.curScore < 800)) this.count = randBl < 16 ? 2 : 3
         if((this.BlockCount > 14 && this.BlockCount < 25) || (this.GM.curScore >= 800 && this.GM.curScore < 2000)) this.count = randBl < 12 ? 3 : 4
@@ -56,9 +57,9 @@ count: int
     }
 
     public Spawn(){
+        if(this.wolf_skill_ing) return
         var gameObj = this.p_block
-        let spc_type = Mathf.RoundToInt(Random.Range(0,this.GM.phase))
-        var spcObj = this.p_spcBlock[spc_type]
+        var spcObj = this.p_spcBlock[0]
         for (let i = 0; i < this.count; i++ ){
             var rand = Mathf.RoundToInt(Random.Range(0, this.spawnList.length-1))
             var pos = new Vector3(this.spawnList[rand].x, this.spawnList[rand].y, this.spawnList[rand].z)
@@ -79,8 +80,9 @@ count: int
             this.StartCoroutine(this.BlockMoveDown(this.BlockGroup.transform.GetChild(i)))
         }
         this.spawnList.splice(0,this.spawnList.length)
-        
         //#endregion
+        
+        
     }
 
     *BlockMoveDown(TR: Transform){
@@ -109,6 +111,20 @@ count: int
 
         this.isBlockMoving = false
         this.Penetration(0)
+
+        for(let i = 0; i < this.BlockGroup.transform.childCount-1; i++){
+            if(this.BlockGroup.transform.GetChild(i).CompareTag("AddBall")) continue
+            if(this.BlockGroup.transform.GetChild(i).transform.position.y < -5.4){
+                this.GM.beforeGameover = true
+                break;
+            }
+            else 
+            {
+                this.GM.beforeGameover = false
+                break;
+            }
+        }
+        
     }
 
     Penetration(num: int){
@@ -131,6 +147,31 @@ count: int
         
     }
 
+    WolfSelect(){
+        this.wolf_skill_ing = true
+        let v = 0
+        for(let i = 0; i < this.BlockGroup.transform.childCount-1; i++){
+            if(this.BlockGroup.transform.GetChild(i).CompareTag("AddBall")) continue
+            else {
+                this.BlockGroup.transform.GetChild(i).GetComponent<Block>().isSelected = true
+                v++
+                if(v >= this.BlockGroup.transform.childCount/5)
+                {
+                    this.GM.Breaking.Invoke(99999999)
+                    break;
+                }
+                
+            }
+        }
+        this.StartCoroutine(this.RevertMain())
+    }
+
+    *RevertMain(){
+        yield null;
+        this.wolf_skill_ing = false
+        this.Spawn()
+    }
+
     spcCount(num: int)
     {
         if(this.spcScore >= this.spcReq){
@@ -142,6 +183,19 @@ count: int
 
     AddBall(pos: GameObject)
     {
+        for(let i = 0; i < this.BlockGroup.transform.childCount-1; i++){
+            if(this.BlockGroup.transform.GetChild(i).CompareTag("AddBall")) continue
+            if(this.BlockGroup.transform.GetChild(i).transform.position.y < -5.4){
+                this.GM.beforeGameover = true
+                break;
+            }
+            else 
+            {
+                this.GM.beforeGameover = false
+                break;
+            }
+        }
+
         for(let i = 0; i < this.GM.addingCount; i++)
         {
             var obj = Object.Instantiate(this.main_Ball, pos.transform.position, this.QI, this.BallGroup.transform)

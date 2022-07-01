@@ -1,13 +1,16 @@
 import { isBreakOrContinueStatement } from 'typescript'
 import { Camera, GameObject, Rect, Screen, Transform, Vector3, Input, LineRenderer, RaycastHit, Physics, LayerMask, Mathf, Quaternion,
-Debug, Color, AnimationClip, WaitForSeconds } from 'UnityEngine'
+Debug, Color, AnimationClip, WaitForSeconds, Random } from 'UnityEngine'
 import {Button, Text} from 'UnityEngine.UI';
 import { UnityEvent, UnityEvent$1 } from 'UnityEngine.Events'
 import { ZepetoCamera, ZepetoPlayers } from 'ZEPETO.Character.Controller'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import Ball from './Ball'
+import { LeaderboardAPI } from 'ZEPETO.Script.Leaderboard';
 
 export default class GameManager extends ZepetoScriptBehaviour {
+
+    public leaderboardID: string
 
     //#region 이벤트
     public Down: UnityEvent$1<GameObject>
@@ -18,6 +21,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public ScoreUp: UnityEvent$1<int>
     public SkillUse: UnityEvent$1<int>
     public Select: UnityEvent
+    public WolfSkill: UnityEvent
     public Breaking: UnityEvent$1<int>  
     //#endregion 
 
@@ -58,7 +62,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public countTxt: Text
     LR: LineRenderer
     BallLR: LineRenderer
-    gameOver = false
+    public isgameOver: bool
 
     public curScore: int = 0
     mob_spawnScore: int = 0
@@ -68,8 +72,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public layermask: LayerMask[]
     public animclip: AnimationClip[]
     skill_selecting: bool
+    spc_models: GameObject
+
+    isPause: bool
+    beforeGameover: bool
     //#endregion
-    
+
     Awake() {
         //#region 이벤트 관리
         this.scoreAddValue = 30
@@ -81,6 +89,8 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.BallLanding = new UnityEvent$1<GameObject>()
         this.BallLanding.AddListener((pos)=> this.PosSetting(pos))
         this.GameOver = new UnityEvent()
+        this.GameOver.AddListener(()=>this.GameEnd())
+        this.WolfSkill = new UnityEvent()
         this.clickable = true
     
         this.SkillUse = new UnityEvent$1<int>()
@@ -92,34 +102,24 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.Breaking = new UnityEvent$1<int>()
         //#endregion
         this.layer = 1
+        this.phase = 0
         this.skill_cooltime = [3,5,7,9]
-        /*this.camera = Camera.main;
-        this.rect = this.camera.rect;
-        this.screen_Scale[0] = (Screen.width / Screen.height) / (9 / 16);
-        this.screen_Scale[1] = 1 / this.screen_Scale[0];
-        if (this.screen_Scale[0] < 1) {
-            this.rect.height = this.screen_Scale[0];
-            this.rect.y = (1 - this.screen_Scale[0]) / 2;
-        }
-        else
-        {
-            this.rect.width = this.screen_Scale[1];
-            this.rect.x = (1 - this.screen_Scale[1]) / 2;
-        }
-        this.camera.rect = this.rect;
-        */
+        this.isgameOver = false
+        this.isPause = false
     }
 
-    Start() {    
-        //ZepetoPlayers.instance.characterData.minMoveDistance = 100
-    }
     //#region 공 발사
     Update() {
+        if(this.isPause) return
         if(this.skill_selecting) this.clickable = false
-        this.Cannon.transform.position = Vector3.Lerp(this.Cannon.transform.position, new Vector3(this.ballfirstpos.x, this.Cannon.transform.position.y, -1), 0.4)
         var player = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character
         var playerT = player.transform
+        for(let i = 0; i < 5; i++){
+            if(this.spc_monster[i] > 0) this.spc_models.transform.GetChild(i).gameObject.SetActive(true)
+            else this.spc_models.transform.GetChild(i).gameObject.SetActive(false)
+        }
         
+
         if(Mathf.Abs(playerT.position.x - this.ballfirstpos.x) <= 0.6){
             playerT.rotation = Quaternion.Euler(new Vector3(0,0,0))
             this.Cannon.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(-180, 270, -270))
@@ -142,16 +142,23 @@ export default class GameManager extends ZepetoScriptBehaviour {
             if(this.BallGroup.transform.childCount <= 1 || this.BallGroup.transform.GetChild(1).GetComponent<Ball>().moving == false)
             {
                 this.Down.Invoke(this.BallGroup.transform.GetChild(0).gameObject)
-          }
-         this.Fall.Invoke()
-         this.addingCount = 0
-         this.countTxt.text = "x" + this.BallGroup.transform.childCount.toString()
+            }
+            if (this.beforeGameover && this.spc_monster[4] > 0){
+                
+                this.spc_monster[4]--
+                this.WolfSkill.Invoke()
+            }
+            this.Fall.Invoke()
+            this.addingCount = 0
+            this.countTxt.text = "x" + this.BallGroup.transform.childCount.toString()
+            this.StartCoroutine(this.CannonMove())
         }
 
         
     }
     
     FixedUpdate(){
+        if(this.isPause) return
         if(this.timerStart && ++this.timerCount == 3)
         {
             console.log(this.launchIndex, this.timerCount)
@@ -164,6 +171,15 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 this.launchIndex = 0
                 this.countTxt.text = ""
             }
+        }
+    }
+
+    *CannonMove(){
+        while(this.Cannon.transform.position.x - this.ballfirstpos.x < 0.2)
+        {
+            yield null;
+            this.Cannon.transform.position = Vector3.Lerp(this.Cannon.transform.position, 
+                new Vector3(this.ballfirstpos.x, this.Cannon.transform.position.y, -1), 0.4)
         }
     }
 
@@ -230,19 +246,24 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     ScoreAdd(type: int)
     {
-        switch(type)
-        {
-            case 1 : {
-                     this.curScore += this.scoreAddValue * 2
-                     this.mob_spawnScore += this.scoreAddValue
-                    }
-                     break;
-
-            default : {
-                      this.curScore += this.scoreAddValue
-                      this.mob_spawnScore += this.scoreAddValue
-                    }
+        if(type == 0){
+            this.curScore += this.scoreAddValue
+            this.mob_spawnScore += this.scoreAddValue
         }
+        
+        else{
+            this.curScore += Mathf.RoundToInt(this.scoreAddValue * 2.5)
+            if(this.spc_monster[this.phase] <= 0){
+                this.skill_cooltime[this.phase] = 1
+            }
+            this.spc_monster[this.phase]++
+            this.phase++
+            if(this.phase > 4){
+                this.phase = Mathf.RoundToInt(Random.Range(0,4))
+            }
+        }
+                     
+
         while(this.mob_spawnScore >= 300){
             this.mob_spawnScore -= 300
             this.normal_mob++
@@ -260,6 +281,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
             }
 
             this.skill_cooltime[type] = 3 + 2 * type
+            this.skill_useable[type] = false
             this.skill_selecting = false
             return;
         }
@@ -287,6 +309,13 @@ export default class GameManager extends ZepetoScriptBehaviour {
         }
     }
     
+    GameEnd()
+    {   
+        this.isgameOver = true
+        LeaderboardAPI.SetScore(this.leaderboardID, this.curScore)
+        this.isPause = true
+    }
+
     AddLayer()
     {
         this.layer++

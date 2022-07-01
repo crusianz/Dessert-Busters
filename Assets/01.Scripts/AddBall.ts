@@ -13,6 +13,11 @@ export default class AddBall extends ZepetoScriptBehaviour {
         //this.GM.Down.AddListener(()=>this.Death())
     }
 
+    Update(){
+        if(this.transform.position.y < -8)
+        this.Death
+    }
+
     Death()
     {
         GameObject.Destroy(this.gameObject)

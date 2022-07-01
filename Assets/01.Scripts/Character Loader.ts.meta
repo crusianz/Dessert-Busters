@@ -21,15 +21,18 @@ ScriptedImporter:
   compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
     { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
     ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
-    UnityEngine_1 = require(\"UnityEngine\");\r\nclass CharacterControllerSample
-    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n        var
-    spawninfo = new ZEPETO_Character_Controller_1.SpawnInfo();\r\n        spawninfo.position
-    = this.gameObject.transform.position;\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
-    \"huh00833\", spawninfo, true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_SceneManagement_1 = require(\"UnityEngine.SceneManagement\");\r\nclass
+    CharacterControllerSample extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n   
+    Start() {\r\n        UnityEngine_1.Time.timeScale = 1;\r\n        var spawninfo
+    = new ZEPETO_Character_Controller_1.SpawnInfo();\r\n        spawninfo.position
+    = this.gameObject.transform.position;\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_World_1.WorldService.userId, spawninfo, true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
     => {\r\n            let _player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n           
-    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.gameObject.SetActive(false);\r\n           
+    if (UnityEngine_SceneManagement_1.SceneManager.GetActiveScene().name == \"Lobby\")\r\n               
+    return;\r\n            ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.gameObject.SetActive(false);\r\n           
     ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.localScale
     = new UnityEngine_1.Vector3(4, 4, 4);\r\n        });\r\n    }\r\n}\r\nexports.default
-    = CharacterControllerSample;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyIExvYWRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlciBMb2FkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkVBQ2lDO0FBRWpDLDZDQUFzQztBQUd0QyxNQUFxQix5QkFBMEIsU0FBUSxxQ0FBcUI7SUFDeEUsS0FBSztRQUVELElBQUksU0FBUyxHQUFHLElBQUksdUNBQVMsRUFBRSxDQUFBO1FBQy9CLFNBQVMsQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFBO1FBQ3ZELGlFQUF1Qix3QkFBd0IsQ0FBL0MsMkNBQWEsQ0FBQyxRQUFRLEVBQTBCLFVBQVUsRUFBRSxTQUFTLEVBQUMsSUFBSSxFQUFFO1FBRTVFLDJDQUFhLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDdkQsSUFBSSxPQUFPLEdBQWdCLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQztZQUM5RCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQTtZQUMvRCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsVUFBVSxHQUFHLElBQUkscUJBQU8sQ0FBQyxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFBO1FBQ3pHLENBQUMsQ0FBQyxDQUFDO0lBRVAsQ0FBQztDQUNKO0FBZEQsNENBY0MifQ==","assetPath":"Assets/01.Scripts/Character
-    Loader.ts","manifest":{"properties":[],"name":"CharacterControllerSample","description":""},"isCompiled":true}'
-  typescriptHash: cca2fb6dff39f696c9144330c94501c0
+    = CharacterControllerSample;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyIExvYWRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlciBMb2FkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkVBQ2lDO0FBQ2pDLCtDQUEwQztBQUMxQyw2Q0FBNEM7QUFDNUMsNkVBQWtFO0FBRWxFLE1BQXFCLHlCQUEwQixTQUFRLHFDQUFxQjtJQUd4RSxLQUFLO1FBQ0Qsa0JBQUksQ0FBQyxTQUFTLEdBQUcsQ0FBQyxDQUFBO1FBQ2xCLElBQUksU0FBUyxHQUFHLElBQUksdUNBQVMsRUFBRSxDQUFBO1FBQy9CLFNBQVMsQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFBO1FBR3ZELGlFQUF1QixzQkFBc0IsQ0FBN0MsMkNBQWEsQ0FBQyxRQUFRLEVBQXdCLDJCQUFZLENBQUMsTUFBTSxFQUFFLFNBQVMsRUFBRSxJQUFJLEVBQUU7UUFFcEYsMkNBQWEsQ0FBQyxRQUFRLENBQUMsa0JBQWtCLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUN2RCxJQUFJLE9BQU8sR0FBZ0IsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDO1lBQzlELElBQUcsMENBQVksQ0FBQyxjQUFjLEVBQUUsQ0FBQyxJQUFJLElBQUksT0FBTztnQkFBRSxPQUFNO1lBQ3hELDJDQUFhLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFBO1lBQy9ELDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFNBQVMsQ0FBQyxVQUFVLEdBQUcsSUFBSSxxQkFBTyxDQUFDLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUE7UUFDekcsQ0FBQyxDQUFDLENBQUM7SUFFUCxDQUFDO0NBQ0o7QUFuQkQsNENBbUJDIn0=","assetPath":"Assets/01.Scripts/Character
+    Loader.ts","manifest":{"properties":[{"assembly":"","name":"canvas","type":"any","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"CharacterControllerSample","description":""},"isCompiled":true}'
+  typescriptHash: 141fdc847313c9eae80dcce1123da5a6

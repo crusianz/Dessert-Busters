@@ -1,11 +1,14 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { UnityEvent } from "UnityEngine.Events";
-import { Transform, Vector3, Time, Rigidbody, ForceMode, Collision, Collider, SphereCollider, Input, Camera, Mathf, GameObject, Vector2, Object, Quaternion, Random, Physics, MeshRenderer} from 'UnityEngine';
+import { Transform, Vector3, Time, Rigidbody, ForceMode, Collision, Collider, SphereCollider, Input, Camera, Mathf, GameObject, Vector2, Object, Quaternion, Random, Physics, MeshRenderer, AudioSource, AudioClip} from 'UnityEngine';
 import { isModuleBlock } from 'typescript';
 import GameManager from './GameManager';
 
 
 export default class Ball extends ZepetoScriptBehaviour {
+
+    audio: AudioSource
+    launchFX: AudioClip
     public speed: float;
     public dir: float;
     isLanding: boolean
@@ -25,6 +28,7 @@ export default class Ball extends ZepetoScriptBehaviour {
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
         this.rb = this.gameObject.GetComponent<Rigidbody>();
         this.col = this.gameObject.GetComponent<SphereCollider>();
+        this.audio = this.GetComponent<AudioSource>();
         if (this.zemini){
             this.Launch(new Vector3(Random.Range(1, -1), Random.Range(0.4, 1), 0))
             console.log(this.gameObject.GetComponentInParent<Rigidbody>().velocity)
@@ -69,6 +73,7 @@ export default class Ball extends ZepetoScriptBehaviour {
         this.isLanding = false
         this.GM.shotTrigger = true
         this.moving = true
+        this.audio.Play()
         this.rb.AddForce(pos * this.speed)
     }
 

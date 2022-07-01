@@ -1,5 +1,5 @@
 import { Compute_DistanceTransform_EventTypes } from 'TMPro'
-import { Animator, Collider, Collision, GameObject, BoxCollider, Mathf, Quaternion, Object, Renderer, Color, MaterialPropertyBlock } from 'UnityEngine'
+import { Animator, Collider, Collision, GameObject, BoxCollider, Mathf, Quaternion, Object, Renderer, Color, MaterialPropertyBlock, AudioSource, AudioClip } from 'UnityEngine'
 import { UnityEvent } from 'UnityEngine.Events';
 import {Text} from 'UnityEngine.UI'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
@@ -7,6 +7,9 @@ import GameManager from './GameManager'
 
 export default class Block extends ZepetoScriptBehaviour {
 
+
+    audio: AudioSource
+    public bounceFX: AudioClip
     public hp_t: Text   
     public isSelected: bool = false
     public particle: GameObject[]
@@ -20,25 +23,25 @@ export default class Block extends ZepetoScriptBehaviour {
 
     Start() {    
         this.render = this.transform.GetChild(0).GetComponent<Renderer>()
+        this.audio = this.GetComponent<AudioSource>()
         this.mpb = new MaterialPropertyBlock()
         this.anim = this.gameObject.GetComponent<Animator>()
         this.col = this.GetComponent<BoxCollider>()
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
+        this.type = this.GM.phase
         this.hp_t = this.gameObject.GetComponentInChildren<Text>()
         this.hp = this.GM.layer
         this.GM.Breaking.AddListener((amount)=>(this.SkillDamage(amount)))
         this.GM.Select.AddListener(()=>(this.SelectInit()))
-
+        this.transform.GetChild(this.type).gameObject.SetActive(true)
     }
 
     Update()
     {
-        if(this.gameObject.transform.position.y < -9 && !this.GM.gameOver){
+        if(this.gameObject.transform.position.y < -7 && !this.GM.isgameOver){
             this.GM.GameOver.Invoke()
         }
         if(this.anim == null) this.anim = this.gameObject.GetComponent<Animator>()
-        if(this.isSelected) this.mpb.SetColor("_Color", new Color(105, 105, 255, 255))
-        else this.mpb.SetColor("_Color", new Color(255, 0, 255, 255))
 
         if(this.hp <= 0)
         {
@@ -57,12 +60,12 @@ export default class Block extends ZepetoScriptBehaviour {
     {
         if(this.isSelected)
         {
+            this.audio.Play()
             this.anim.SetTrigger("Hit")
             if (this.hp < amount) this.hp -= this.hp
             else this.hp -= amount
         }
     }
-
 
     public Death()
     {
@@ -77,6 +80,7 @@ export default class Block extends ZepetoScriptBehaviour {
         if(coll.CompareTag("Ball")) 
         {
             this.hp--
+            this.audio.Play()
             this.anim.SetTrigger("Hit")
             
         }

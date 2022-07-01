@@ -1,4 +1,4 @@
-import {Camera, BoxCollider, GameObject, Vector3, Input, Mathf } from 'UnityEngine'
+import {Camera, BoxCollider, GameObject, Vector3, Input, Mathf, Renderer, MeshRenderer } from 'UnityEngine'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import GameManager from './GameManager'
 
@@ -6,11 +6,12 @@ export default class Skill extends ZepetoScriptBehaviour {
 
     GM: GameManager
     collider: BoxCollider
+    renderer: Renderer
     type: int 
     vertical: bool
     @SerializeField()
-    width: int[] = [1, 28, 5]
-    height: int[] = [30, 1, 5]
+    width: int[] = [1, 16, 5]
+    height: int[] = [16, 1, 5]
 
     Start() {    
         this.GM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>()
@@ -18,9 +19,12 @@ export default class Skill extends ZepetoScriptBehaviour {
         this.GM.Breaking.AddListener(()=>this.SelectEnd())
         this.collider = this.gameObject.GetComponent<BoxCollider>()
         this.collider.enabled = false
+        this.renderer = this.gameObject.GetComponent<MeshRenderer>()
+        this.renderer.enabled = false
     }
 
     Update(){
+        if(this.GM.isPause || !this.GM.skill_selecting) return
         if(Input.GetMouseButtonDown(0))
         {
             this.GM.Select.Invoke()
@@ -54,13 +58,19 @@ export default class Skill extends ZepetoScriptBehaviour {
 
     Selecting(type: int)
     {
-        this.type = type;
-        this.collider.size = new Vector3(this.width[type-1], this.height[type-1], 1)
-        this.collider.enabled = true
-        this.transform.position = new Vector3(-6.6 + 1.8, 4.9 - 3.6, 0)
+        if((type == 2 || type == 3) && this.GM.skill_selecting)
+        {
+            this.type = type;
+            this.transform.localScale = new Vector3(this.width[type-1], this.height[type-1], 1)
+            this.collider.enabled = true
+            this.renderer.enabled = true
+            this.transform.position = new Vector3(-6.6 + 1.8, 4.9 - 3.6, 0)
+        }
+        
     }
 
     SelectEnd(){
         this.collider.enabled = false
+        this.renderer.enabled = false
     }
 }
